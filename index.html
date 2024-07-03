@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBC Tank Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to IBC Tank Store</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#" id="product-link">Products</a></li>
+                <li><a href="#" id="contact-link">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h2>Your Reliable Source for IBC Tanks in Pakistan</h2>
+            <p>We provide high-quality IBC tanks for all your storage needs.</p>
+        </section>
+
+        <section class="products">
+            <h2>Our Products</h2>
+            <div class="product" data-id="1">
+                <h3>IBC Tank 1000L</h3>
+                <p>High-quality IBC tank with a capacity of 1000 liters.</p>
+                <button class="view-product">View Details</button>
+            </div>
+            <div class="product" data-id="2">
+                <h3>Plastic Drum 500L</h3>
+                <p>High-quality Plastic Drum with a capacity of 500 liters.</p>
+                <button class="view-product">View Details</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 IBC Tank Store. All rights reserved.</p>
+    </footer>
+
+    <div id="contact-popup" class="popup">
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <h2>Contact Us</h2>
+            <form id="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="product-popup" class="popup">
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <h2 id="product-title"></h2>
+            <img id="product-image" src="" alt="Product Image">
+            <video id="product-video" controls>
+                <source src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p id="product-description"></p>
+            <p id="product-price"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
