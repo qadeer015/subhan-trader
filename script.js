@@ -42,12 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 description: 'High-quality IBC tank with a capacity of 1000 liters.',
             },
             2: {
-<<<<<<< HEAD
                 title: 'Plastic Drum 500L',
-=======
-                title: 'Plastic Drum 200L',
-                image: 'path/to/image2.jpg',  // Replace with actual image path
->>>>>>> 30f2f430bcfdd75ef989c3f0c6c37ed905361193
                 video: 'path/to/video2.mp4',  // Replace with actual video path
                 description: 'High-quality Plastic Drum with a capacity of 200 liters.',
             }
@@ -62,3 +57,15 @@ document.addEventListener('DOMContentLoaded', () => {
         popupProduct.style.display = 'block';
     }
 });
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.scrollY >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
