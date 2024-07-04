@@ -6,7 +6,7 @@ body {
 }
 
 header {
-    background-color: #343a40;
+    background-color:#007bff;
     color: white;
     padding: 10px 0;
     text-align: center;
@@ -34,7 +34,7 @@ main {
 
 .products {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
@@ -42,18 +42,18 @@ main {
     border: 1px solid #dee2e6;
     padding: 20px;
     margin: 10px;
-    width: 200px;
+    width:40%;
     background-color: white;
 }
 
 footer {
-    background-color: #343a40;
+    background-color:#007bff;
     color: white;
     text-align: center;
     padding: 10px 0;
-    position: fixed;
     width: 100%;
-    bottom: 0;
+    position: absolute;
+    bottom: 0px;
 }
 
 .popup {

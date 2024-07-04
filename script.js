@@ -34,17 +34,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function displayProductPopup(productId) {
-        // Dummy product data for demonstration purposes
+        //  product data for demonstration purposes
         const products = {
             1: {
                 title: 'IBC Tank 1000L',
-                image: 'path/to/image1.jpg',  // Replace with actual image path
                 video: 'path/to/video1.mp4',  // Replace with actual video path
                 description: 'High-quality IBC tank with a capacity of 1000 liters.',
             },
             2: {
                 title: 'Plastic Drum 500L',
-                image: 'path/to/image2.jpg',  // Replace with actual image path
                 video: 'path/to/video2.mp4',  // Replace with actual video path
                 description: 'High-quality Plastic Drum with a capacity of 500 liters.',
             }
@@ -52,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const product = products[productId];
         document.getElementById('product-title').textContent = product.title;
-        document.getElementById('product-image').src = product.image;
         document.getElementById('product-video').src = product.video;
         document.getElementById('product-description').textContent = product.description;
         document.getElementById('product-price').textContent = product.price;
