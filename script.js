@@ -42,9 +42,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 description: 'High-quality IBC tank with a capacity of 1000 liters.',
             },
             2: {
+<<<<<<< HEAD
                 title: 'Plastic Drum 500L',
+=======
+                title: 'Plastic Drum 200L',
+                image: 'path/to/image2.jpg',  // Replace with actual image path
+>>>>>>> 30f2f430bcfdd75ef989c3f0c6c37ed905361193
                 video: 'path/to/video2.mp4',  // Replace with actual video path
-                description: 'High-quality Plastic Drum with a capacity of 500 liters.',
+                description: 'High-quality Plastic Drum with a capacity of 200 liters.',
             }
         };
 
