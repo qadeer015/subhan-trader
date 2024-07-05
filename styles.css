@@ -82,7 +82,7 @@ main {
     margin: 10px;
     width:100%;
     background-color: white;
-    box-shadow: 0px 20px 50px 0px rgba(0, 0, 0, 0.702);
+    box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.702);
 
 }
 .dummy{
@@ -189,13 +189,60 @@ footer {
 .whatsapp a i:first-child{
     color: rgb(46, 237, 46);
 }
-@media (max-width:800px) {
+.description{
+    border: 1px solid #f8f9fa;
+    width: 100%;
+    background-color:white;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    letter-spacing: 1px;
+    font-size: 16px;
+}
+.description p{
+    text-align: left;
+}
+h3{
+    color: orangered;
+}
+.info{
+    text-align: left;
+    margin: 2px 0px;
+    color: orangered;
+}
+.info a{
+    color: #007bff;
+    text-decoration: none;
+}
+.info a:hover{
+    text-decoration: underline;
+}
+.sale-container{
+    display: flex;
+    align-items: flex-start;
+    margin-left: 10px;
+}
+.sale{
+    border: 1px solid transparent;
+    background-color: orangered;
+    width: fit-content;
+    padding: 1px 3px;
+    border-radius: 10px;
+    color: white;
+}
+.tabs{
+    color: white;
+}
+.tabs.active{
+    color: #007bff;
+}
+@media (max-width:1300px) {
     .location{
         display: none;
     }
     .product{
     width: 100%;
-    box-shadow: 0px 0px 100px 30px black;
+    box-shadow: 0px 20px 20px 0px black;
     }
     .products{
         flex-direction: column;
@@ -205,6 +252,12 @@ footer {
         position: relative;
         bottom: 160px;
         right: 28px;
+    }
+    .description p{
+        margin: 0px 10px;
+    }
+    .info{
+        margin:5px 10px ;
     }
     footer{
         position: unset;
