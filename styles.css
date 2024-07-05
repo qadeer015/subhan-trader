@@ -190,6 +190,9 @@ footer {
     color: rgb(46, 237, 46);
 }
 @media (max-width:800px) {
+    .location{
+        display: none;
+    }
     .product{
     width: 100%;
     box-shadow: 0px 0px 100px 30px black;
