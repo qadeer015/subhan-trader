@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const popupProduct = document.getElementById('product-popup');
     const closeBtns = document.querySelectorAll('.close');
     const viewProductBtns = document.querySelectorAll('.view-product');
+    
+    
 
     contactLink.addEventListener('click', (event) => {
         event.preventDefault();
@@ -32,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             displayProductPopup(productId);
         });
     });
+    
 
     function displayProductPopup(productId) {
         //  product data for demonstration purposes
@@ -69,3 +72,4 @@ function myFunction() {
     navbar.classList.remove("sticky");
   }
 }
+

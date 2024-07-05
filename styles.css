@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f8f9fa;
+    overflow-x: hidden;
 }
 
 header {
@@ -10,13 +11,31 @@ header {
     color: white;
     padding: 10px 0;
     text-align: center;
-    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+}
+header img{
+    width: 150px;
+    height: 100px;
+    margin: -35px;
+}
+.location{
+  position:absolute;
+  right: 5px;
+
 }
 nav{
     width: 100%;
-    background-color: #007bffcd;
-    border: 1px solid white;
+    background-color:rgba(0, 0, 0, 0.702);
+    border: 1px solid transparent;
     text-align: center;
+}
+nav a:hover{
+    text-decoration: underline;
+    color: white;
+    transition: 0.5s;
 }
 nav ul {
     list-style-type: none;
@@ -26,6 +45,7 @@ nav ul {
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 1;
 }
 nav ul li {
     display: inline;
@@ -41,7 +61,14 @@ main {
     padding: 20px;
     text-align: center;
 }
-
+.view-product{
+    position: relative;
+    top: 40px;
+    border: 1px solid  rgba(0, 0, 0, 0.702);
+    padding: 5px 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.702);
+}
 .products {
     display: flex;
     justify-content: space-evenly;
@@ -55,12 +82,27 @@ main {
     margin: 10px;
     width:100%;
     background-color: white;
+    box-shadow: 0px 20px 50px 0px rgba(0, 0, 0, 0.702);
+
+}
+.dummy{
+    visibility: hidden;
+}
+.buy-btn{
+    background-color: #007bff;
+    width: 100%;
+    padding: 10px 0px;
+    position: relative;
+    top: 30px;
+}
+.buy-btn a{
+    color: white;
+    text-decoration: none;
 }
 .product img{
-    width: 200px;
-    height: 170px;
+    width: 270px;
+    height: 190px;
 }
-
 footer {
     background-color:#007bff;
     color: white;
@@ -150,10 +192,16 @@ footer {
 @media (max-width:800px) {
     .product{
     width: 100%;
+    box-shadow: 0px 0px 100px 30px black;
     }
     .products{
         flex-direction: column;
         margin: 0px 20px;
+    }
+    .new-btn{
+        position: relative;
+        bottom: 160px;
+        right: 28px;
     }
     footer{
         position: unset;
