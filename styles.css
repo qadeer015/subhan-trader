@@ -236,6 +236,25 @@ h3{
 .tabs.active{
     color: #007bff;
 }
+.links-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    gap: 20px;
+}
+.links-wrapper p{
+    font-size: 25px;
+    text-decoration: none;
+}
+.white{
+    color: white;
+}
+.green{
+    color: rgb(53, 246, 53);
+}
+.mobile{
+    display: none;
+}
 @media (max-width:1300px) {
     .location{
         display: none;
@@ -261,5 +280,10 @@ h3{
     }
     footer{
         position: unset;
+    }
+    .mobile{
+        position: unset;
+        text-align: center;
+        display: block;
     }
 }
