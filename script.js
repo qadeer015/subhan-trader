@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const popupProduct = document.getElementById('product-popup');
     const closeBtns = document.querySelectorAll('.close');
     const viewProductBtns = document.querySelectorAll('.view-product');
-    
-    
+
+
 
     contactLink.addEventListener('click', (event) => {
         event.preventDefault();
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             displayProductPopup(productId);
         });
     });
-    
+
 
     function displayProductPopup(productId) {
         //  product data for demonstration purposes
@@ -60,22 +60,22 @@ document.addEventListener('DOMContentLoaded', () => {
         popupProduct.style.display = 'block';
     }
 });
-window.onscroll = function() {myFunction()};
+window.onscroll = function () { myFunction() };
 
 var navbar = document.getElementById("navbar");
 var sticky = navbar.offsetTop;
 
 function myFunction() {
-  if (window.scrollY >= sticky) {
-    navbar.classList.add("sticky")
-  } else {
-    navbar.classList.remove("sticky");
-  }
+    if (window.scrollY >= sticky) {
+        navbar.classList.add("sticky")
+    } else {
+        navbar.classList.remove("sticky");
+    }
 }
 var navContainer = document.getElementById("navbar");
 var tabs = navContainer.getElementsByClassName("tabs");
 for (var i = 0; i < tabs.length; i++) {
-    tabs[i].addEventListener("click", function() {
+    tabs[i].addEventListener("click", function () {
         var current = document.getElementsByClassName("active");
         if (current.length > 0) {
             current[0].className = current[0].className.replace(" active", "");

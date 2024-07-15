@@ -14,13 +14,13 @@
 
 <body>
     <header>
-        <p><img src="1000_F_228091946_WGzM1pPXW3lpt4by4YJCfkdJxWvIuoSH-removebg-preview.png" alt="ibc tank"></p> 
+        <p><img src="1000_F_228091946_WGzM1pPXW3lpt4by4YJCfkdJxWvIuoSH-removebg-preview.png" alt="ibc tank"></p>
         <h1>IBC Tank Store</h1>
         <p class="location">
             <i class="fa-solid fa-location-dot"></i>
             <!-- headoffice:c1 sultan town,raiwind road 1km thokar niaz baig lahore. -->
-             <!-- goddam:lahore,rawalpindi,karachi. -->
-           <b>Lahore,Pakistan.</b>
+            <!-- goddam:lahore,rawalpindi,karachi. -->
+            <b>Lahore,Pakistan.</b>
         </p>
     </header>
     <nav id="navbar">
@@ -53,14 +53,14 @@
                 <img src="330gallon-reconditioned-ibc.jpg" alt="ibc tank">
                 <p class="dummy">b</p>
                 <button class="view-product">View Details</button>
-                <p  class="buy-btn"><a href="https://api.whatsapp.com/send?phone=923204904565">Contact to Buy</a></p>
+                <p class="buy-btn"><a href="https://api.whatsapp.com/send?phone=923204904565">Contact to Buy</a></p>
             </div>
             <div class="product" data-id="2">
                 <img src="275gallon-rebottled-ibc.jpg" alt="ibc tank">
                 <p class="dummy">b</p>
                 <button class="view-product">View Details</button>
-                <p  class="buy-btn"><a href="https://api.whatsapp.com/send?phone=923204904565">Contact to Buy</a></p>
-    
+                <p class="buy-btn"><a href="https://api.whatsapp.com/send?phone=923204904565">Contact to Buy</a></p>
+
             </div>
         </section>
         <section class="products">
@@ -68,19 +68,19 @@
                 <img src="330gallon-reconditioned-ibc.jpg" alt="ibc tank">
                 <p class="dummy">b</p>
                 <button class="view-product">View Details</button>
-                <p  class="buy-btn"><a href="https://api.whatsapp.com/send?phone=923204904565">Contact to Buy</a></p>
+                <p class="buy-btn"><a href="https://api.whatsapp.com/send?phone=923204904565">Contact to Buy</a></p>
             </div>
             <div class="product" data-id="1">
                 <img src="330gallon-reconditioned-ibc.jpg" alt="ibc tank">
                 <p class="dummy">b</p>
                 <button class="view-product">View Details</button>
-                <p  class="buy-btn"><a href="https://api.whatsapp.com/send?phone=923204904565">Contact to Buy</a></p>
+                <p class="buy-btn"><a href="https://api.whatsapp.com/send?phone=923204904565">Contact to Buy</a></p>
             </div>
             <div class="product" data-id="2">
                 <img src="275gallon-rebottled-ibc.jpg" alt="ibc tank">
                 <p class="dummy">b</p>
                 <button class="view-product">View Details</button>
-                <p  class="buy-btn"><a href="https://api.whatsapp.com/send?phone=923204904565">Contact to Buy</a></p>
+                <p class="buy-btn"><a href="https://api.whatsapp.com/send?phone=923204904565">Contact to Buy</a></p>
             </div>
         </section>
     </main>
@@ -88,11 +88,12 @@
     <footer>
         <div class="links-wrapper">
             <p><a href="https://www.facebook.com/IBCtankPakistan"><i class="fa-brands fa-facebook white"></i></a></p>
-           <p><a href="https://api.whatsapp.com/send?phone=923204904565"><i class="fa-brands fa-whatsapp green"></i></a></a></p>
+            <p><a href="https://api.whatsapp.com/send?phone=923204904565"><i
+                        class="fa-brands fa-whatsapp green"></i></a></a></p>
         </div>
         <p class="location mobile">
             <i class="fa-solid fa-location-dot"></i>
-           <b>Lahore,Pakistan.</b>
+            <b>Lahore,Pakistan.</b>
         </p>
         <p>&copy; 2024 IBC Tank Store. All rights reserved.</p>
     </footer>
@@ -133,6 +134,48 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const contactForm = document.getElementById('contact-form');
+
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const formData = new FormData(contactForm);
+                const data = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    message: formData.get('message')
+                };
+
+                fetch('https://script.google.com/macros/s/AKfycbw37oRpSZ0he26FuOrpF5LypJgFj8AZORvHI4RJoVIvCEjwV027LsT_1C0ZnqZIcvPM/exec', {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(response => {
+                        if (response.result === 'success') {
+                            alert('Message sent successfully!');
+                            contactForm.reset();
+                        } else {
+                            alert('Error sending message: ' + response.error);
+                        }
+                    })
+                    .catch(error => {
+                        alert('Error: ' + error.message);
+                        console.error('Fetch error:', error);
+                    });
+            });
+        });
+    </script>
 </body>
 
 </html>
