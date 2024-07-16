@@ -84,3 +84,18 @@ for (var i = 0; i < tabs.length; i++) {
     });
 }
 
+
+//submit form
+function emailSend() {
+    Email.send({
+        Host: "smtp.elasticemail.com",
+        Username: "rabdulqadeer96@gmail.com",
+        Password: "EABA84C2995E19E3B1829CC7AF9CAF1348D0",
+        To: 'kashif.hy@gmail.com',
+        From: "rabdulqadeer96@gmail.com",
+        Subject: "This is the subject",
+        Body: "And this is the body"
+    }).then(
+        message => alert(message)
+    );
+}

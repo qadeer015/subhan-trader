@@ -18,7 +18,7 @@
         <h1>IBC Tank Store</h1>
         <p class="location">
             <i class="fa-solid fa-location-dot"></i>
-            <!-- headoffice:c1 sultan town,raiwind road 1km thokar niaz baig lahore. -->
+            <!-- head office:c1 sultan town,raiwind road 1km thokar niaz baig lahore. -->
             <!-- goddam:lahore,rawalpindi,karachi. -->
             <b>Lahore,Pakistan.</b>
         </p>
@@ -102,13 +102,16 @@
         <div class="popup-content">
             <span class="close">&times;</span>
             <h2>Contact Us</h2>
-            <form id="contact-form">
+            <form id="contact-form" onsubmit="emailSend(); reset(); return false; ">
+                <!--action="https://formsubmit.co/rabdulqadeer96@gmail.com" method="POST"-->
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
+                <label for="phone">Phone:</label>
+                <input type="number" id="phone" name="phone" required>
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
                 <label for="message">Message:</label>
-                <textarea id="message" name="message" required></textarea>
+                <textarea id="message" name="message"></textarea>
                 <button type="submit">Send</button>
             </form>
             <div class="whatsapp">
@@ -134,47 +137,23 @@
     </div>
 
     <script src="script.js"></script>
+
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const contactForm = document.getElementById('contact-form');
-
-            contactForm.addEventListener('submit', function (e) {
-                e.preventDefault();
-
-                const formData = new FormData(contactForm);
-                const data = {
-                    name: formData.get('name'),
-                    email: formData.get('email'),
-                    message: formData.get('message')
-                };
-
-                fetch('https://script.google.com/macros/s/AKfycbw37oRpSZ0he26FuOrpF5LypJgFj8AZORvHI4RJoVIvCEjwV027LsT_1C0ZnqZIcvPM/exec', {
-                    method: 'POST',
-                    body: JSON.stringify(data),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(response => {
-                        if (response.result === 'success') {
-                            alert('Message sent successfully!');
-                            contactForm.reset();
-                        } else {
-                            alert('Error sending message: ' + response.error);
-                        }
-                    })
-                    .catch(error => {
-                        alert('Error: ' + error.message);
-                        console.error('Fetch error:', error);
-                    });
-            });
-        });
+        function emailSend() {
+            Email.send({
+                Host: "smtp.elasticemail.com",
+                Username: "rabdulqadeer96@gmail.com",
+                Password: "EABA84C2995E19E3B1829CC7AF9CAF1348D0",
+                To: 'kashif.hy@gmail.com',
+                From: "rabdulqadeer96@gmail.com",
+                Subject: "This is the subject",
+                Body: "And this is the body"
+            }).then(
+                message => alert(message)
+            );
+        }
     </script>
 </body>
 
