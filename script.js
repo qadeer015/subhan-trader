@@ -96,6 +96,11 @@ function emailSend() {
         Subject: "This is the subject",
         Body: "And this is the body"
     }).then(
-        message => alert(message)
+        message => alert('Thanks for your message.We will contact as soon as possible.')
     );
+}
+window.onkeydown=(event)=>{
+    if (event=='Enter'){
+        emailSend();
+    }
 }
