@@ -48,13 +48,13 @@
                     <a href="https://api.whatsapp.com/send?phone=923204904565">Contact to Buy</a>
                 </p>
             </div>
-            <div class="product" data-id="1">
-                <img src="330gallon-reconditioned-ibc.jpg" alt="ibc tank">
+            <div class="product" data-id="2">
+                <img src="drum2.jpeg" alt="ibc tank">
                 <p class="dummy"></p>
                 <p class="buy-btn"><a href="https://api.whatsapp.com/send?phone=923204904565">Contact to Buy</a>
                 </p>
             </div>
-            <div class="product" data-id="2">
+            <div class="product" data-id="1">
                 <img src="275gallon-rebottled-ibc.jpg" alt="ibc tank">
                 <p class="dummy"></p>
                 <p class="buy-btn"><a href="https://api.whatsapp.com/send?phone=923204904565">Contact to Buy</a>
@@ -155,8 +155,13 @@
                 Subject: "This is the subject",
                 Body: "And this is the body"
             }).then(
-                message => alert(message)
+                message => alert('Thanks for your message.We will contact as soon as possible.')
             );
+        }
+        window.onkeydown=(event)=>{
+            if (event=='Enter'){
+                emailSend();
+            }
         }
     </script>
 </body>

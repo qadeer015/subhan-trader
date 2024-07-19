@@ -40,14 +40,14 @@ document.addEventListener('DOMContentLoaded', () => {
         //  product data for demonstration purposes
         const products = {
             1: {
-                title: 'IBC Tank 1000L',
+                title: 'IBC Tank 1000 Liters',
                 video: 'path/to/video1.mp4',  // Replace with actual video path
-                description: 'High-quality IBC tank with a capacity of 1000 liters.',
+                description: 'High-quality IBC tank with a capacity of 1000 Liters.',
             },
             2: {
-                title: 'Plastic Drum 500L',
+                title: 'Plastic Drum 200 Liters',
                 video: 'path/to/video2.mp4',  // Replace with actual video path
-                description: 'High-quality Plastic Drum with a capacity of 200 liters.',
+                description: 'High-quality Plastic Drum with a capacity of 200 Liters.',
             }
         };
 
@@ -96,6 +96,11 @@ function emailSend() {
         Subject: "This is the subject",
         Body: "And this is the body"
     }).then(
-        message => alert(message)
+        message => alert('Thanks for your message.We will contact as soon as possible.')
     );
+}
+window.onkeydown=(event)=>{
+    if (event=='Enter'){
+        emailSend();
+    }
 }
