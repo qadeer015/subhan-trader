@@ -16,6 +16,7 @@ body {
     --primary-subtle: #054488ea !important;
     --light: #f8f9fa !important;
     --white: white !important;
+    --success: #59af74 !important;
 }
 
 div,
@@ -394,6 +395,9 @@ button {
 
 .bg-primary {
     background-color: var(--primary);
+}
+.bg-success{
+    background-color: var(--success);
 }
 
 .bg-secondary {
