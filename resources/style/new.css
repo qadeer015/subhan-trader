@@ -11,9 +11,9 @@ body {
 
 :root {
     --primary: #007bfffb !important;
+    --primary-subtle: #054488ea !important;
     --secondary: #333 !important;
     --info: orangered !important;
-    --primary-subtle: #054488ea !important;
     --light: #f8f9fa !important;
     --white: white !important;
     --success: #59af74 !important;
@@ -444,6 +444,9 @@ button {
 
 .text-white {
     color: var(--white);
+}
+.text-success{
+    color: var(--success);
 }
 
 /* width classes */
