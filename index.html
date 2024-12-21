@@ -4,132 +4,318 @@
 <head>
     <meta name="google-adsense-account" content="ca-pub-9292583891027825">
     <meta name="google-site-verification" content="K4z-r4V_K0KjAzYclyxNY_Go9iLx5Rg0D7eDOZzsVQs" />
-    <link rel="shortcut icon" href="Screenshot 2024-07-05 110130.png" width="100px" height="100px" type="image/x-icon">
+    <link rel="shortcut icon" href="resources/images/Screenshot 2024-07-05 110130.png" width="100px" height="100px"
+        type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IBC Tank Store</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="resources/style/styles.css">
+    <link rel="stylesheet" href="resources/style/new.css">
 </head>
 
-<body>
-    <header>
-        <p><img src="1000_F_228091946_WGzM1pPXW3lpt4by4YJCfkdJxWvIuoSH-removebg-preview.png" alt="ibc tank"></p>
-        <h1>IBC Tank Store</h1>
-        <p class="location">
-            <i class="fa-solid fa-location-dot"></i>
-            <!-- headoffice:c1 sultan town,raiwind road 1km thokar niaz baig lahore. -->
-            <!-- goddam:lahore,rawalpindi,karachi. -->
-            <b>Lahore,Pakistan.</b>
-        </p>
-    </header>
-    <nav id="navbar">
-        <ul>
-            <li><a href="#" class="tabs active">Home</a></li>
-            <li><a href="products.html" class="tabs">Products</a></li>
-            <li><a href="#" id="contact-link" class="tabs">Contact Us</a></li>
-        </ul>
-    </nav>
-
-    <main>
-        <section class="intro">
-            <h2>Your Reliable Source for IBC Tanks in Pakistan</h2>
-            <p>We provide high-quality IBC tanks for all your storage needs.</p>
-        </section>
-        <section class="sale-container">
-            <div class="sale">for Sale</div>
-        </section>
-        <section class="products">
-            <div class="product" data-id="1">
-                <img src="330gallon-reconditioned-ibc.jpg" alt="ibc tank">
-                <p class="dummy"></p>
-                <p class="buy-btn">
-                    <a href="https://api.whatsapp.com/send?phone=923204904565">Contact to Buy</a>
-                </p>
-            </div>
-            <div class="product" data-id="2">
-                <img src="drum2.jpeg" alt="ibc tank">
-                <p class="dummy"></p>
-                <p class="buy-btn"><a href="https://api.whatsapp.com/send?phone=923204904565">Contact to Buy</a>
-                </p>
-            </div>
-            <div class="product" data-id="1">
-                <img src="275gallon-rebottled-ibc.jpg" alt="ibc tank">
-                <p class="dummy"></p>
-                <p class="buy-btn"><a href="https://api.whatsapp.com/send?phone=923204904565">Contact to Buy</a>
-                </p>
-
-            </div>
-        </section>
-        <section class="description">
-
-            <h3> Benefits of IBC Tanks</h3>
-            <p>
-                Intermediate bulk containers (IBCs) are highly useful across various industries and applications.
-                They provide a standard way to package cargo, meeting federal regulations and the latest industry
-                standards.
-                Most IBCs, except for caged polyethylene ones, are designed for extensive reuse.
-                Their long service lives and high reusability make them very cost-effective.
-            </p>
-            <h3>Strength and Resistance</h3>
-            <p>
-                IBC tanks are strong and easy to fill, stack, and load. They resist impacts, tears, and punctures.
-                Both polyethylene and metal IBCs can withstand the corrosive effects of many materials and chemicals.
-                Metal IBCs are perfect for handling flammable and combustible materials, high temperatures, and
-                situations
-                that require strict hygiene. All our IBCs are approved by UN/DOT for transporting hazardous materials
-                like corrosives, acids, and caustics, both by land and sea. They can handle typical transport pressures
-                and stresses with automatic vacuum vents that activate when internal pressures reach 0.25 PSIG.
-                Materials can be stored and handled with minimal risk and waste.
-                The design of IBC inflow and outflow systems minimizes spillage and overflow, promoting zero waste.</p>
-            </p>
-            <h5 class="info">We provide services in all over Pakistan.</h5>
-            <h5 class="info">Price details and Order placement will be done via <a
-                    href="https://api.whatsapp.com/send?phone=923204904565">whatsapp</a>.</h5>
-        </section>
-
-    </main>
-
-    <footer>
-        <div class="links-wrapper">
-            <p><a href="https://www.facebook.com/IBCtankPakistan"><i class="fa-brands fa-facebook white"></i></a></p>
-            <p><a href="https://api.whatsapp.com/send?phone=923204904565"><i
-                        class="fa-brands fa-whatsapp green"></i></a></a></p>
+<body class="bg-light">
+    <header class="bg-primary text-white d-flex justify-content-around align-items-center position-sticky">
+        <div class="d-flex align-items-center p-1 ">
+            <p><img src="resources/images/1000_F_228091946_WGzM1pPXW3lpt4by4YJCfkdJxWvIuoSH-removebg-preview.png"
+                    alt="ibc tank"></p>
+            <h1 id="fs">IBC Tank Store</h1>
         </div>
+        <ul id="navbar" class="navbar d-flex px-2">
+            <li class="nav-item"><a href="#" class="nav-link text-white fw-bold">Home</a></li>
+            <li class="nav-item"><a href="products.html" class="nav-link text-white fw-bold">Products</a></li>
+        </ul>
+    </header>
+    <div id="tank-header-bg-img" class="bg-primary-subtle text-center text-white pt-2 p-5">
+        <h1>IBC Tanks For Sale</h1>
+        <h3 class="py-1">Your Reliable Source for IBC Tanks in Pakistan</h3>
+    </div>
+    <div class="text-center">
+        <div class="container py-5">
+            <section class="row text-center">
+                <div class="col-sm-6 col-md-4 mb-2 col-lg-3" data-id="1">
+                    <img src="resources/images/330gallon-reconditioned-ibc.jpg" alt="ibc tank" width="300px"
+                        height="250px">
+                    <p class="dummy"></p>
+                    <p class="mx-2 btn btn-primary rounded-1 fw-bold p-1">
+                        <a href="https://api.whatsapp.com/send?phone=923204904565" class="text-white ">Contact to
+                            Buy</a>
+                    </p>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3" data-id="2">
+                    <img src="resources/images/drum2.jpeg" alt="ibc tank" width="300px" height="250px">
+                    <p class="dummy"></p>
+                    <p class="mx-2 btn btn-primary rounded-1 fw-bold p-1">
+                        <a href="https://api.whatsapp.com/send?phone=923204904565" class="text-white">Contact to Buy</a>
+                    </p>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3" data-id="1">
+                    <img src="resources/images/275gallon-rebottled-ibc.jpg" alt="ibc tank" width="300px" height="250px">
+                    <p class="dummy"></p>
+                    <p class="mx-2 btn btn-primary fw-bold rounded-1 p-1">
+                        <a href="https://api.whatsapp.com/send?phone=923204904565" class="text-white">Contact to Buy</a>
+                    </p>
+
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3" data-id="1">
+                    <img src="resources/images/275gallon-rebottled-ibc.jpg" alt="ibc tank" width="300px" height="250px">
+                    <p class="dummy"></p>
+                    <p class="mx-2 btn btn-primary rounded-1 fw-bold p-1 ">
+                        <a href="https://api.whatsapp.com/send?phone=923204904565" class="text-white">Contact to Buy</a>
+                    </p>
+
+                </div>
+
+                <div class="col-sm-6 col-md-4 col-lg-3 my-2" data-id="1">
+                    <img src="resources/images/330gallon-reconditioned-ibc.jpg" alt="ibc tank" width="300px"
+                        height="250px">
+                    <p class="dummy"></p>
+                    <p class="mx-2 btn btn-primary rounded-1 fw-bold p-1">
+                        <a href="https://api.whatsapp.com/send?phone=923204904565" class="text-white">Contact to Buy</a>
+                    </p>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 my-2 " data-id="2">
+                    <img src="resources/images/drum2.jpeg" alt="ibc tank" width="300px" height="250px">
+                    <p class="dummy"></p>
+                    <p class="mx-2 btn btn-primary rounded-1 fw-bold p-1">
+                        <a href="https://api.whatsapp.com/send?phone=923204904565" class="text-white">Contact to Buy</a>
+                    </p>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 my-2 " data-id="1">
+                    <img src="resources/images/275gallon-rebottled-ibc.jpg" alt="ibc tank" width="300px" height="250px">
+                    <p class="dummy"></p>
+                    <p class="mx-2 btn btn-primary rounded-1 fw-bold p-1">
+                        <a href="https://api.whatsapp.com/send?phone=923204904565" class="text-white">Contact to Buy</a>
+                    </p>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 my-2" data-id="1">
+                    <img src="resources/images/275gallon-rebottled-ibc.jpg" alt="ibc tank" width="300px" height="250px">
+                    <p class="dummy"></p>
+                    <p class="mx-2 btn btn-primary rounded-1 fw-bold p-1">
+                        <a href="https://api.whatsapp.com/send?phone=923204904565" class="text-white">Contact to Buy</a>
+                    </p>
+
+                </div>
+            </section>
+        </div>
+        <div class="bg-primary py-5">
+            <h2 class=" fs-1 text-white">Intermediate Bulk Containers</h2>
+            <p class="mx-5 py-2 text-start text-white lead p-3">
+                Intermediate bulk containers are DOT/UN approved containers designed for the reusable handling of
+                hazardous, non-hazardous, and food grade bulk liquids. They are also used for some solids, granulated
+                goods, and semi solids but are not DOT/UN labeled for these cargos. Intermediate bulk containers are
+                known commonly as IBC tanks, IBC totes, and simply as IBCs. Certain IBC models are also ideal for
+                blending, distilling, fermentation, and storage applications.
+                IBC containers ensure cargo security due to their robust design and manufacture. They safeguard internal
+                payloads against potentially damaging external conditions such as water, air, heat, dust, and other
+                general pollutants. Food grade products can maintain hygiene standards. Sensitive chemicals and
+                materials can be safely transported without experiencing corrosion or degradation. Intermediate bulk
+                containers are capable of withstanding various elements including human handling, machine handling,
+                rain, wind, dust, and sea salt corrosion. Our product offerings include caged IBC totes, several high
+                density polyethylene IBC tank models, and stainless steel, carbon steel metal IBCs to fulfill the many
+                needs of the various industries we serve.
+            </p>
+        </div>
+        <div id="bg-img" class="d-flex justify-content-center align-items-center rounded-1 ">
+            <div class="bg-primary-subtle col-sm-6 rounded-1 py-3 flex-row  w-50 my-3">
+                <p id="fs" class="text-white fw-bold fs-1 line-hight-1">Common IBC Tote Uses</p>
+                <div class="p-2 d-flex justify-content-center align-items-center flex-row gap-5 text-white">
+                    <div class="d-flex">
+                        <ul class="text-start d-flex flex-column gap-1">
+                            <li>Agriculture</li>
+                            <li>Chemicals and Solvents</li>
+                            <li>Oil and Gas</li>
+                            <li>Petrochemical</li>
+                            <li>Refineries</li>
+                            <li>Offshore Platforms</li>
+                        </ul>
+                    </div>
+                    <div class="d-flex ">
+                        <ul class="text-start d-flex  flex-column gap-1">
+                            <li>Water Treatment</li>
+                            <li>Plastics</li>
+                            <li>Paints and Coatings</li>
+                            <li>Dyes</li>
+                            <li>Food and Beverage</li>
+                            <li>Flavors and Fragrances</li>
+                        </ul>
+                    </div>
+                    <div class="d-flex ">
+                        <ul class="text-start d-flex  flex-column gap-1">
+                            <li>Personal Care</li>
+                            <li>Construction</li>
+                            <li>Road Work/Striping</li>
+                            <li>Lubricants and Greases</li>
+                            <li>Pharmaceutical</li>
+                            <li>Landscaping </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="bg-secondary p-5">
+            <div>
+                <h3 id="fs" class="text-white pt-3 pb-1 fs-2 fw-bold lead"> Benefits of IBC Tanks</h3>
+            </div>
+            <div>
+                <p class="text-start text-white p-3">
+                    Intermediate bulk containers (IBCs) are highly useful across various industries and applications.
+                    They provide a standard way to package cargo, meeting federal regulations and the latest industry
+                    standards.
+                    Most IBCs, except for caged polyethylene ones, are designed for extensive reuse.
+                    Their long service lives and high reusability make them very cost-effective.
+                </p>
+            </div>
+            <div>
+                <h3 class=" text-white pt-3 pb-1 fs-2 fw-bold lead">Strength and Resistance</h3>
+            </div>
+            <div>
+                <p class="text-start text-white p-3">
+                    IBC tanks are strong and easy to fill, stack, and load. They resist impacts, tears, and punctures.
+                    Both polyethylene and metal IBCs can withstand the corrosive effects of many materials and
+                    chemicals.
+                    Metal IBCs are perfect for handling flammable and combustible materials, high temperatures, and
+                    situations
+                    that require strict hygiene. All our IBCs are approved by UN/DOT for transporting hazardous
+                    materials
+                    like corrosives, acids, and caustics, both by land and sea. They can handle typical transport
+                    pressures
+                    and stresses with automatic vacuum vents that activate when internal pressures reach 0.25 PSIG.
+                    Materials can be stored and handled with minimal risk and waste.
+                    The design of IBC inflow and outflow systems minimizes spillage and overflow, promoting zero waste.
+                </p>
+            </div>
+
+        </section>
+    </div>
+    <div class="d-flex align-items-center justify-content-center flex-column pt-5 pb-5 p-5 ">
+        <h3 id="fs" class="fs-2"> Advantages of IBC Tanks</h3>
+        <div class="d-flex justify-content-center align-items-center flex-column gap-1">
+            <p class="text-start mt-2 p-3">
+                Intermediate bulk containers possess various characteristics that contribute to their usefulness across
+                industries and applications. IBCs provide a consistent cargo packaging that is manufactured and
+                specified to federal regulations and current industry technology. All except caged polyethylene IBCs are
+                designed to be extensively reused. Most IBC totes are highly reusable and have long service lives,
+                making them very cost effective assets
+                regulations and current industry technology. All except caged polyethylene IBCs are
+                designed to be extensively reused. Most IBC totes are highly reusable and have long service lives,
+                making them very cost effective assets.</p>
+        </div>
+
+    </div>
+    <div class=" d-flex align-items-center justify-content-around p-5 bg-secondary flex-row">
+        <div class="d-flex align-items-center justify-content-center flex-column w-100">
+            <p class="fw-bold text-white d-flex align-items-center justify-content-center">Shape, Organization, and Maneuverability</p>
+            <p class="text-white  p-3 ">All IBCs are cube shaped and all but Megatainers are sized to or near
+                standard pallet dimensions. This allows for more material to be transported within similar dimensions
+                while maintaining effective and familiar mobility. IBC totes have either two way or four way forklift,
+                pallet jack channels that allows increased maneuverability by providing multi-directional approach. All
+                IBCs are stackable. The stackable design promotes efficient handling, storing, and transport, and allows
+                for gravity-based product dispensing as well as other system integration applications.</p>
+        </div>
+        <div class="bg-img-2  w-75">
+        </div>
+    </div>
+    <div class=" d-flex align-items-center justify-content-around p-5  mt-2 flex-row">
+        <div class="bg-img-4 mb-3 w-75">
+        </div>
+        <div class="d-flex  justify-content-center flex-column w-100">
+            <p class="fw-bold d-flex align-items-center justify-content-center">Shape, Organization, and Maneuverability
+            </p>
+            <div class="d-flex flex-column">
+                <p class="mx-3 py-3 p-1">IBC tanks are durable and easy to fill, stack, and load. They are resilient against
+                    impact, tearing, and against easy puncturing. Polyethylene and metal IBCs resist the corrosive
+                    effects of many materials and chemicals. Metal IBCs are ideally suited for flammable, combustible
+                    materials, exposure to high temperatures, and strict hygiene and cleanliness applications. All our
+                    offered IBCs are UN/DOT approved for handling hazardous materials such as corrosives, acids, and
+                    caustics as well as approved for land and sea transport. All IBCs can withstand typical transport
+                    pressure and stress with automatic vacuum vents that self-operate when internal pressures begin to
+                    reach 0.25 PSIG. Materials can be stored and handled with limited risk and waste. IBC inflow and
+                    outflow engineering promotes zero waste from spillage or overflow.</p>
+            </div>
+
+        </div>
+    </div>
+    <div class=" d-flex align-items-center justify-content-around p-5 bg-secondary mt-2 flex-row">
+        <div class="d-flex align-items-center justify-content-center flex-column w-100">
+            <p class="fw-bold text-white ">Shape, Organization, and Maneuverability</p>
+            <div class="d-flex align-items-center justify-content-center flex-column">
+                <p class="text-white mx-5 py-3">Intermediate bulk containers provide numerous benefits to
+                    suppliers, distributors, end users, wholesalers, and transporters. They have many characteristics
+                    that make their use beneficial to company economics and logistics. IBCs are well suited for
+                    industries and companies that are dependent on the secure packaging and arrival of their product.
+                    Products can be effectively moved through long, complex supply chains and can be safely and easily
+                    warehoused. Long term storage and transport can be accomplished without neither the cargo freight
+                    nor the IBC depreciating in quality and quantity standards.
+                    Time and money can be saved through reusing IBC containers for specific
+                    applications, potentially replacing large quantities of drums. A 330 gallon IBC tank is the
+                    equivalent of six 55 gallon drums, fits to one pallet size, and handled by one forklift. One IBC can
+                    potentially make hundreds of successful trips. These qualities contribute to reduced physical waste
+                    and disposal costs. IBCs are recyclable, reducing environmental impact at service life end.</p>
+            </div>
+
+        </div>
+        <div class="bg-img-3  w-75 mt-3">
+        </div>
+    </div>
+    <footer>
+
+        <div class="d-flex justify-content-evenly align-items-center gap-5 flex-row">
+            <div class="icon d-flex pt-3">
+                <div class="fs-1">ibc</div>
+                <div class="d-flex flex-column">
+                    <div>icon</div>
+                    <div class="fs-1">tanks</div>
+                </div>
+            </div>
+            <div class="add-location d-flex flex-column gap-1">
+                <p class="fw-bold fs-2">Our Location</p>
+                <p>[ pakistan lahore farooqa abad gaon lahore lahore lahore ]</p>
+            </div>
+            <div id="contact-popup" class="p-2">
+                <h2>Contact Us</h2>
+                <form id="contact-form" class="text-start" action="https://formsubmit.co/kashif.hy@gmail.com"
+                    method="POST">
+                    <!-- onsubmit="emailSend(); reset(); return false; "-->
+                     <div class="w-50 d-flex flex-column ">
+                    <label for="name"></label>
+                    <input class="pl-1 pt-1 pb-1 rounded-1 input-container" type="text" id="name" name="name" placeholder="Name:" required>
+                    <label for="phone">Phone:</label>
+                    <input class="pl-2 pt-1  pb-1 rounded-1" type="number" id="phone" name="phone" required>
+                    <label for="email">Email:</label>
+                    <input class="pl-1 pt-1  pb-1 rounded-1" type="email" id="email" name="email" required>
+                    <label for="message" class="">Message:</label>
+                    <textarea class="pl-1  pt-1 rounded-1" id="message" name="message"></textarea>
+                    <button class="pl-1  pt-1 pb-1  rounded-1 mt-2" type="submit">Send</button>
+                </div>
+                </form>
+                <!-- <div class="whatsapp">
+                    <a href="https://api.whatsapp.com/send?phone=923204904565">
+                        <div class="border">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <i>whatsapp</i>
+                    </div>
+                    </a>
+                </div> -->
+                <div class="links-wrapper border bg-primary-subtle mt-3 p-3 rounded-2">
+                    <p><a href="https://www.facebook.com/IBCtankPakistan"><i
+                                class="fa-brands fa-facebook white"></i></a>
+                    </p>
+                    <p><a href="https://api.whatsapp.com/send?phone=923204904565"><i
+                                class="fa-brands fa-whatsapp green"></i></a></a></p>
+                </div>
+            </div>
+
+        </div>
+
         <p class="location mobile">
             <i class="fa-solid fa-location-dot"></i>
             <b>Lahore,Pakistan.</b>
         </p>
-        <p>&copy; 2024 IBC Tank Store. All rights reserved.</p>
     </footer>
-
-    <div id="contact-popup" class="popup">
-        <div class="popup-content">
-            <span class="close">&times;</span>
-            <h2>Contact Us</h2>
-            <form id="contact-form" action="https://formsubmit.co/kashif.hy@gmail.com" method="POST" >
-                <!-- onsubmit="emailSend(); reset(); return false; "-->
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-                <label for="phone">Phone:</label>
-                <input type="number" id="phone" name="phone" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <label for="message">Message:</label>
-                <textarea id="message" name="message"></textarea>
-                <button type="submit">Send</button>
-            </form>
-            <div class="whatsapp">
-                <a href="https://api.whatsapp.com/send?phone=923204904565">
-                    <i class="fa-brands fa-whatsapp"></i>
-                    <i>whatsapp</i>
-                </a>
-            </div>
-        </div>
-    </div>
-
+    <p class="p-3 d-flex align-items-center justify-content-center text-white bg-secondary">&copy; 2024 IBC Tank Store. All rights reserved.</p>
     <div id="product-popup" class="popup">
         <div class="popup-content">
             <span class="close">&times;</span>
@@ -143,7 +329,7 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="resources/js/"></script>
     <script src="https://smtpjs.com/v3/smtp.js">
     </script>
     <script>

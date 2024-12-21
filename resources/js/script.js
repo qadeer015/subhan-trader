@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    contactLink.addEventListener('click', (event) => {
-        event.preventDefault();
-        popupContact.style.display = 'block';
-    });
+    // contactLink.addEventListener('click', (event) => {
+    //     event.preventDefault();
+    //     popupContact.style.display = 'block';
+    // });
 
     closeBtns.forEach(btn => {
         btn.addEventListener('click', () => {
