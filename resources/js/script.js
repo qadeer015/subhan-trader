@@ -48,6 +48,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 title: 'Plastic Drum 200 Liters',
                 video: 'path/to/video2.mp4',  // Replace with actual video path
                 description: 'High-quality Plastic Drum with a capacity of 200 Liters.',
+            },
+            3: {
+                title: 'Plastic Drum 200 Liters',
+                video: 'path/to/video2.mp4',  // Replace with actual video path
+                description: 'High-quality Plastic Drum with a capacity of 200 Liters.',
             }
         };
 
