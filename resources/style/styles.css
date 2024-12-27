@@ -29,7 +29,8 @@
     height: 40vh;
     background-repeat: no-repeat;
     background-size: cover;
-}
+ }
+ 
 .buy-button{
     position: relative;
     top: 40px;
@@ -90,10 +91,10 @@ nav ul li a {
     text-decoration: none;
 }
 
-/* main {
+main {
     padding: 20px;
     text-align: center;
-} */
+} 
 .view-product{
     position: relative;
     top: 40px;
@@ -102,7 +103,7 @@ nav ul li a {
     color: white;
     background-color: rgba(0, 0, 0, 0.702);
 }
-/* .products {
+.products {
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
@@ -117,7 +118,7 @@ nav ul li a {
     background-color: white;
     box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.702);
 } */
-.dummy{
+dummy{
     visibility: hidden;
 }
 .buy-btn{
@@ -219,8 +220,8 @@ footer {
 }
 .whatsapp a i:first-child{
     color: rgb(46, 237, 46);
-}
-/* .description{
+}*/
+.description{
     border: 1px solid #f8f9fa;
     width: 100%;
     background-color:white;
@@ -229,13 +230,13 @@ footer {
     margin-top: 30px;
     letter-spacing: 1px;
     font-size: 16px;
-} */
-.description p{
+} 
+ .description p{
     text-align: left;
 }
-/* h3{
+ h3{
     color: orangered;
-} */
+} 
 .info{
     text-align: left;
     margin: 2px 0px;
@@ -317,4 +318,4 @@ footer {
         text-align: center;
         display: block;
     }
-}
+} 

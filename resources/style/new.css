@@ -32,7 +32,6 @@ button {
     margin-left: 15% !important;
     margin-right: 15% !important;
 }
-
 /* display flex */
 .d-flex {
     display: flex !important;
@@ -470,7 +469,14 @@ button {
 .h-100 {
     width: 100vh !important;
 }
-
+/* border */
+.border-1{
+  border: 1px solid; 
+  color: #007bfffb;
+}
+#box-shadow{
+    box-shadow: 1px 2px 17px 4px var(--primary-subtle) ;
+}
 /* button */
 .btn {
     border-radius: 5px;
@@ -554,6 +560,10 @@ button {
 }
 
 /* row */
+#row{
+    display: flex;
+    flex-direction: row;
+}
 /* .row-1{
     display: flex !important;
     flex-direction: row !important;
@@ -744,5 +754,8 @@ a {
     }
     #media-info{
         width: 100%;
+    }
+    #media-info{
+        font-size: 10px;
     }
 }
