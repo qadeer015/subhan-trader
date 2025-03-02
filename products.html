@@ -4,7 +4,8 @@
 <head>
     <meta name="google-site-verification" content="K4z-r4V_K0KjAzYclyxNY_Go9iLx5Rg0D7eDOZzsVQs" />
     <meta name="google-adsense-account" content="ca-pub-9292583891027825">
-    <link rel="shortcut icon" href="resources/images/Screenshot 2024-07-05 110130.png" width="100px" height="100px" type="image/x-icon">
+    <link rel="shortcut icon" href="resources/images/Screenshot 2024-07-05 110130.png" width="100px" height="100px"
+        type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -12,12 +13,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IBC Tank Store</title>
     <link rel="stylesheet" href="resources/style/styles.css">
+    <link rel="stylesheet" href="resources/style/new.css">
 </head>
 
 <body>
-    <header>
-        <p><img src="resources/images/1000_F_228091946_WGzM1pPXW3lpt4by4YJCfkdJxWvIuoSH-removebg-preview.png" alt="ibc tank"></p>
-        <h1>IBC Tank Store</h1>
+    <header class="bg-primary text-white d-flex justify-content-around align-items-center position-sticky">
+        <div class="d-flex align-items-center p-1 ">
+            <p><img src="resources/images/1000_F_228091946_WGzM1pPXW3lpt4by4YJCfkdJxWvIuoSH-removebg-preview.png"
+                    alt="ibc tank"></p>
+            <h1 id="fs">IBC Tank Store</h1>
+        </div>
+        <ul id="navbar" class="navbar d-flex px-2">
+            <li class="nav-item"><a href="index.html" class="nav-link text-white fw-bold">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link text-white fw-bold">Products</a></li>
+        </ul>
         <p class="location">
             <i class="fa-solid fa-location-dot"></i>
             <!-- head office:c1 sultan town,raiwind road 1km thokar niaz baig lahore. -->
@@ -25,79 +34,143 @@
             <b>Lahore,Pakistan.</b>
         </p>
     </header>
-    <nav id="navbar">
-        <ul>
-            <li><a href="index.html" class="tabs">Home</a></li>
-            <li><a href="#" id="product-link" class="tabs active">Products</a></li>
-            <li><a href="#" id="contact-link" class="tabs">Contact Us</a></li>
-        </ul>
-    </nav>
 
-    <main>
-        <section class="intro">
-            <h2>Your Reliable Source for IBC Tanks in Pakistan</h2>
-            <p>We provide high-quality IBC tanks for all your storage needs.</p>
-        </section>
+    <div id="tank-header-bg-img" class="bg-primary-subtle text-center text-white pt-2 p-5">
+        <h1>Your Reliable Source for IBC Tanks in Pakistan</h1>
+        <h3 class="py-1">We provide high-quality IBC tanks for all your storage needs.</h3>
+    </div>
+    <div class="text-center ">
+        <div class="container py-5">
+            <h2 class="our-products mb-3">
+                <p> Our Products</p>
+            </h2>
+            <section class="row text-center ">
+                <div class="col-sm-6 col-md-4 mb-2 col-lg-3 " data-id="1">
+                    <img src="resources/images/330gallon-reconditioned-ibc.jpg" alt="ibc tank" width="300px"
+                        height="250px">
+                    <p class="dummy"></p>
+                    <p class="mx-2 btn btn-primary rounded-1 fw-bold p-1">
+                        <a href="https://api.whatsapp.com/send?phone=923204904565" class="text-white ">Contact to
+                            Buy</a>
+                    </p>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3" data-id="2">
+                    <img src="resources/images/drum2.jpeg" alt="ibc tank" width="300px" height="250px">
+                    <p class="dummy"></p>
+                    <p class="mx-2 btn btn-primary rounded-1 fw-bold p-1">
+                        <a href="https://api.whatsapp.com/send?phone=923204904565" class="text-white">Contact to Buy</a>
+                    </p>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3" data-id="1">
+                    <img src="resources/images/275gallon-rebottled-ibc.jpg" alt="ibc tank" width="300px" height="250px">
+                    <p class="dummy"></p>
+                    <p class="mx-2 btn btn-primary fw-bold rounded-1 p-1">
+                        <a href="https://api.whatsapp.com/send?phone=923204904565" class="text-white">Contact to Buy</a>
+                    </p>
 
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3" data-id="1">
+                    <img src="resources/images/275gallon-rebottled-ibc.jpg" alt="ibc tank" width="300px" height="250px">
+                    <p class="dummy"></p>
+                    <p class="mx-2 btn btn-primary rounded-1 fw-bold p-1 ">
+                        <a href="https://api.whatsapp.com/send?phone=923204904565" class="text-white">Contact to Buy</a>
+                    </p>
 
-        <h2 class="our-products">
-            <p> Our Products</p>
-        </h2>
+                </div>
 
-        <section class="products">
-            <div class="product" data-id="1">
-                <img src="resources/images/330gallon-reconditioned-ibc.jpg" alt="ibc tank">
-                <p class="dummy">b</p>
-                <button class="view-product">View Details</button>
-                <p class="buy-btn"><a href="https://api.whatsapp.com/send?phone=923204904565">Contact to Buy</a></p>
-            </div>
-            <div class="product" data-id="1">
-                <img src="resources/images/download (3).jpeg" alt="ibc tank">
-                <p class="dummy">b</p>
-                <button class="view-product">View Details</button>
-                <p class="buy-btn"><a href="https://api.whatsapp.com/send?phone=923204904565">Contact to Buy</a></p>
-            </div>
-            <div class="product" data-id="2">
-                <img src="resources/images/images-removebg-preview.png" alt="ibc tank">
-                <p class="dummy">b</p>
-                <button class="view-product">View Details</button>
-                <p class="buy-btn"><a href="https://api.whatsapp.com/send?phone=923204904565">Contact to Buy</a></p>
+                <div class="col-sm-6 col-md-4 col-lg-3 my-2" data-id="1">
+                    <img src="resources/images/330gallon-reconditioned-ibc.jpg" alt="ibc tank" width="300px"
+                        height="250px">
+                    <p class="dummy"></p>
+                    <p class="mx-2 btn btn-primary rounded-1 fw-bold p-1">
+                        <a href="https://api.whatsapp.com/send?phone=923204904565" class="text-white">Contact to Buy</a>
+                    </p>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 my-2 " data-id="2">
+                    <img src="resources/images/drum2.jpeg" alt="ibc tank" width="300px" height="250px">
+                    <p class="dummy"></p>
+                    <p class="mx-2 btn btn-primary rounded-1 fw-bold p-1">
+                        <a href="https://api.whatsapp.com/send?phone=923204904565" class="text-white">Contact to Buy</a>
+                    </p>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 my-2 " data-id="1">
+                    <img src="resources/images/275gallon-rebottled-ibc.jpg" alt="ibc tank" width="300px" height="250px">
+                    <p class="dummy"></p>
+                    <p class="mx-2 btn btn-primary rounded-1 fw-bold p-1">
+                        <a href="https://api.whatsapp.com/send?phone=923204904565" class="text-white">Contact to Buy</a>
+                    </p>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 my-2" data-id="1">
+                    <img src="resources/images/275gallon-rebottled-ibc.jpg" alt="ibc tank" width="300px" height="250px">
+                    <p class="dummy"></p>
+                    <p class="mx-2 btn btn-primary rounded-1 fw-bold p-1">
+                        <a href="https://api.whatsapp.com/send?phone=923204904565" class="text-white">Contact to Buy</a>
+                    </p>
 
-            </div>
-        </section>
-        <section class="products">
-            <div class="product" data-id="1">
-                <img src="resources/images/images (4).jpeg" alt="ibc tank">
-                <p class="dummy">b</p>
-                <button class="view-product">View Details</button>
-                <p class="buy-btn"><a href="https://api.whatsapp.com/send?phone=923204904565">Contact to Buy</a></p>
-            </div>
-            <div class="product" data-id="1">
-                <img src="resources/images/330gallon-rebottled-ibc.jpg" alt="ibc tank">
-                <p class="dummy">b</p>
-                <button class="view-product">View Details</button>
-                <p class="buy-btn"><a href="https://api.whatsapp.com/send?phone=923204904565">Contact to Buy</a></p>
-            </div>
-            <div class="product" data-id="2">
-                <img src="resources/images/resources/images/drum2.jpeg" alt="ibc tank">
-                <p class="dummy">b</p>
-                <button class="view-product">View Details</button>
-                <p class="buy-btn"><a href="https://api.whatsapp.com/send?phone=923204904565">Contact to Buy</a></p>
-            </div>
-        </section>
-    </main>
+                </div>
+            </section>
+        </div>
+    </div>
 
     <footer>
-        <div class="links-wrapper">
-            <p><a href="https://www.facebook.com/IBCtankPakistan"><i class="fa-brands fa-facebook white"></i></a></p>
-            <p><a href="https://api.whatsapp.com/send?phone=923204904565"><i
-                        class="fa-brands fa-whatsapp green"></i></a></a></p>
+
+        <div class="d-flex justify-content-evenly align-items-center gap-5 flex-row">
+            <div class="icon d-flex pt-3">
+                <div class="fs-1">ibc</div>
+                <div class="d-flex flex-column">
+                    <div>icon</div>
+                    <div class="fs-1">tanks</div>
+                </div>
+            </div>
+            <div class="add-location d-flex flex-column gap-1">
+                <p class="fw-bold fs-2">Location</p>
+                <p>Lahore,Pakistan.</p>
+            </div>
+            <div id="contact-popup" class="p-2">
+                <h2>Contact Us</h2>
+                <form id="contact-form" class="text-start" action="https://formsubmit.co/kashif.hy@gmail.com"
+                    method="POST">
+                    <!-- onsubmit="emailSend(); reset(); return false; "-->
+                    <div class="w-50 d-flex flex-column ">
+                        <label for="name"></label>
+                        <input class="pl-1 pt-1 pb-1 rounded-1 input-container" type="text" id="name" name="name"
+                            placeholder="Name:" required>
+                        <label for="phone">Phone:</label>
+                        <input class="pl-1 pt-1  pb-1 rounded-1" type="number" id="phone" name="phone" required>
+                        <label for="email">Email:</label>
+                        <input class="pl-1 pt-1  pb-1 rounded-1" type="email" id="email" name="email" required>
+                        <label for="message" class="">Message:</label>
+                        <textarea class="pl-1  pt-1 rounded-1" id="message" name="message" rows="5"></textarea>
+                        <button class="p-1  rounded-1 mt-2 btn bg-success text-white" type="submit">Send</button>
+                    </div>
+                </form>
+                <!-- <div class="whatsapp">
+                    <a href="https://api.whatsapp.com/send?phone=923204904565">
+                        <div class="border">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <i>whatsapp</i>
+                    </div>
+                    </a>
+                </div> -->
+                <div class="links-wrapper border bg-primary-subtle mt-3 p-3 rounded-2 justify-content-evenly">
+                    <p>
+                        <a href="https://www.facebook.com/IBCtankPakistan">
+                            <i class="fa-brands fa-facebook white"> </i>
+                        </a>
+                    </p>
+                    <p>
+                        <a href="https://api.whatsapp.com/send?phone=923204904565">
+                            <i class="fa-brands fa-whatsapp green"></i>
+                        </a>
+                    </p>
+                </div>
+            </div>
         </div>
+
         <p class="location mobile">
             <i class="fa-solid fa-location-dot"></i>
             <b>Lahore,Pakistan.</b>
         </p>
-        <p>&copy; 2024 IBC Tank Store. All rights reserved.</p>
     </footer>
 
     <div id="contact-popup" class="popup">

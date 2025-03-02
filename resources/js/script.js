@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const contactLink = document.getElementById('contact-link');
+    //const contactLink = document.getElementById('contact-link');
     const popupContact = document.getElementById('contact-popup');
     const popupProduct = document.getElementById('product-popup');
     const closeBtns = document.querySelectorAll('.close');
