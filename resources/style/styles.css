@@ -54,11 +54,7 @@ header img{
     height: 100px;
     margin: -35px;
 }
-.location{
-  position:absolute;
-  right: 5px;
 
-}
 nav{
     width: 100%;
     background-color:rgba(0, 0, 0, 0.702);
