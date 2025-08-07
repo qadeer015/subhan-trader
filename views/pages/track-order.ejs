@@ -1,0 +1,230 @@
+<%- include('../partials/_header') %>
+
+<div class="container my-5">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card shadow">
+        <div class="card-body p-lg-5">
+          <h1 class="text-center mb-4">Track Your Order</h1>
+          <p class="text-center text-muted mb-5">Check the status of your IBC tanks, containers, or Sumandri Jhag order</p>
+          
+          <!-- Order Tracking Form -->
+          <div class="row justify-content-center mb-5">
+            <div class="col-lg-8">
+              <div class="card border-primary">
+                <div class="card-body">
+                  <form id="trackOrderForm">
+                    <div class="row g-3">
+                      <div class="col-md-8">
+                        <label for="orderNumber" class="form-label">Order Number</label>
+                        <input type="text" class="form-control" id="orderNumber" placeholder="e.g. SUM-2023-12345" required>
+                      </div>
+                      <div class="col-md-4">
+                        <label for="phoneNumber" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="phoneNumber" placeholder="0300 1234567" required>
+                      </div>
+                      <div class="col-12 text-center mt-3">
+                        <button type="submit" class="btn btn-primary px-4">
+                          <i class="bi bi-search me-2"></i>Track Order
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tracking Results (Initially Hidden) -->
+          <div id="trackingResults" class="d-none">
+            <div class="row justify-content-center">
+              <div class="col-lg-10">
+                <div class="card border-success">
+                  <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">Order #<span id="displayOrderNumber">SUM-2023-12345</span></h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <h5>Order Details</h5>
+                        <ul class="list-group list-group-flush mb-4">
+                          <li class="list-group-item d-flex justify-content-between">
+                            <span>Order Date:</span>
+                            <span id="orderDate">15 Nov 2023</span>
+                          </li>
+                          <li class="list-group-item d-flex justify-content-between">
+                            <span>Total Amount:</span>
+                            <span class="fw-bold" id="orderAmount">PKR 85,500</span>
+                          </li>
+                          <li class="list-group-item d-flex justify-content-between">
+                            <span>Payment Method:</span>
+                            <span id="paymentMethod">Bank Transfer</span>
+                          </li>
+                          <li class="list-group-item d-flex justify-content-between">
+                            <span>Delivery Address:</span>
+                            <span class="text-end" id="deliveryAddress">123 Industrial Area, Lahore</span>
+                          </li>
+                        </ul>
+                        
+                        <h5>Items Ordered</h5>
+                        <div class="table-responsive">
+                          <table class="table table-sm">
+                            <thead>
+                              <tr>
+                                <th>Product</th>
+                                <th>Qty</th>
+                                <th>Price</th>
+                              </tr>
+                            </thead>
+                            <tbody id="orderItems">
+                              <tr>
+                                <td>1000L IBC Tank (Used)</td>
+                                <td>5</td>
+                                <td>PKR 15,000</td>
+                              </tr>
+                              <tr>
+                                <td>Sumandri Jhag Insulation</td>
+                                <td>10 rolls</td>
+                                <td>PKR 10,500</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                      
+                      <div class="col-md-6">
+                        <h5>Delivery Status</h5>
+                        <div class="timeline">
+                          <div class="timeline-item active">
+                            <div class="timeline-point"></div>
+                            <div class="timeline-content">
+                              <h6 class="fw-bold">Order Confirmed</h6>
+                              <p class="text-muted mb-0">15 Nov 2023, 10:30 AM</p>
+                            </div>
+                          </div>
+                          <div class="timeline-item active">
+                            <div class="timeline-point"></div>
+                            <div class="timeline-content">
+                              <h6 class="fw-bold">Processing</h6>
+                              <p class="text-muted mb-0">16 Nov 2023, 9:15 AM</p>
+                              <small>Your items are being prepared for shipment</small>
+                            </div>
+                          </div>
+                          <div class="timeline-item">
+                            <div class="timeline-point"></div>
+                            <div class="timeline-content">
+                              <h6>Shipped</h6>
+                              <p class="text-muted mb-0">Estimated: 18 Nov 2023</p>
+                            </div>
+                          </div>
+                          <div class="timeline-item">
+                            <div class="timeline-point"></div>
+                            <div class="timeline-content">
+                              <h6>Out for Delivery</h6>
+                              <p class="text-muted mb-0">Estimated: 20 Nov 2023</p>
+                            </div>
+                          </div>
+                          <div class="timeline-item">
+                            <div class="timeline-point"></div>
+                            <div class="timeline-content">
+                              <h6>Delivered</h6>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                          <h5>Delivery Partner</h5>
+                          <div class="d-flex align-items-center">
+                            <img src="/images/tcs-logo.png" alt="TCS" class="me-3" style="height: 40px;">
+                            <div>
+                              <p class="mb-1" id="courierName">TCS Express</p>
+                              <p class="mb-1">Tracking #: <span id="trackingNumber">LX45218965PK</span></p>
+                              <a href="#" class="btn btn-sm btn-outline-primary">Track on Courier Website</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer text-center">
+                    <button class="btn btn-success me-2">
+                      <i class="bi bi-printer me-1"></i>Print Receipt
+                    </button>
+                    <button class="btn btn-warning">
+                      <i class="bi bi-headset me-1"></i>Need Help?
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Help Section -->
+          <div class="row mt-5">
+            <div class="col-lg-8 mx-auto">
+              <div class="alert alert-info">
+                <h4 class="alert-heading">Need Help Tracking Your Order?</h4>
+                <p class="mb-1">Contact our customer support team:</p>
+                <ul class="mb-0">
+                  <li><i class="bi bi-telephone"></i> <a href="tel:+923001234567">0300 1234567</a> (9am-7pm)</li>
+                  <li><i class="bi bi-whatsapp"></i> <a href="https://wa.me/923001234567">WhatsApp Support</a></li>
+                  <li><i class="bi bi-envelope"></i> <a href="mailto:support@sumandricontainers.com">support@sumandricontainers.com</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .timeline {
+    position: relative;
+    padding-left: 1rem;
+  }
+  .timeline-item {
+    position: relative;
+    padding-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    border-left: 2px solid #dee2e6;
+  }
+  .timeline-item:last-child {
+    border-left: 2px solid transparent;
+  }
+  .timeline-item.active {
+    border-left-color: #198754;
+  }
+  .timeline-item.active .timeline-point {
+    background-color: #198754;
+    border-color: #198754;
+  }
+  .timeline-point {
+    position: absolute;
+    left: -9px;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #dee2e6;
+    background: white;
+  }
+  .timeline-content {
+    padding-left: 0.5rem;
+  }
+</style>
+
+<script>
+  document.getElementById('trackOrderForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    // In a real implementation, you would call your backend API here
+    document.getElementById('trackingResults').classList.remove('d-none');
+    window.scrollTo({
+      top: document.getElementById('trackingResults').offsetTop - 100,
+      behavior: 'smooth'
+    });
+  });
+</script>
+
+<%- include('../partials/_footer') %>

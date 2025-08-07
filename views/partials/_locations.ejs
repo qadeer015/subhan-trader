@@ -1,0 +1,25 @@
+<h2>Locations</h2>
+
+<div id="map" style="height: 300px; width: 100%;"></div>
+<p class="mt-3 fw-bold">
+    <i class="bi bi-geo-alt"></i>
+    Lahore, Pakistan.
+</p>
+<script>
+  function initMap() {
+    const location = { lat: 31.5204, lng: 74.3587 }; // Example: Lahore, Pakistan
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 14,
+      center: location,
+    });
+    const marker = new google.maps.Marker({
+      position: location,
+      map: map,
+    });
+  }
+</script>
+
+<!-- Replace `YOUR_API_KEY` with your actual API key -->
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALsT11N46VIAkllaf-cKEiPm58gHCAXZY&callback=initMap">
+</script>

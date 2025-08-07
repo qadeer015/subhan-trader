@@ -1,0 +1,29 @@
+const db = require("../config/db");
+
+class Contact {
+    static async create(name, email, message) {
+        const [insertResult] = await db.execute(
+            'INSERT INTO contacts (name, email, message) VALUES (?, ?, ?)',
+            [name, email, message]
+        );
+
+        const [rows] = await db.execute(
+            'SELECT * FROM contacts WHERE id = ?',
+            [insertResult.insertId]
+        );
+
+        return rows[0];
+    }
+
+    static async getAll() {
+        const [rows] = await db.execute('SELECT * FROM contacts ORDER BY created_at DESC');
+        return rows;
+    }
+
+    static async delete(id) {
+        const result = await db.execute('DELETE FROM contacts WHERE id = ?', [id]);
+        return result;
+    }
+}
+
+module.exports = Contact;
