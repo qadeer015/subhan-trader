@@ -1,0 +1,94 @@
+<%- include('../partials/_header') %>
+
+<h2 class="mb-4">Products</h2>
+
+<form class="row g-3 mb-4" method="get">
+    <div class="col-md-4">
+        <input type="text" name="search" class="form-control" placeholder="Search products...">
+    </div>
+    <div class="col-md-3">
+        <select name="category" class="form-select">
+            <option value="">All Categories</option>
+            <% categories.forEach(c => { %>
+                <option value="<%= c.id %>"><%= c.name %></option>
+            <% }) %>
+        </select>
+    </div>
+    <div class="col-md-3">
+        <select name="sort" class="form-select">
+            <option value="newest">Newest</option>
+            <option value="price_asc">Price: Low to High</option>
+            <option value="price_desc">Price: High to Low</option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-primary w-100">Apply</button>
+    </div>
+</form>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <% products.forEach(p => { %>
+        <div class="col">
+            <div class="card h-100">
+                <a class="text-decoration-none" href="/products/<%= p.id %>">
+                    <img src="/uploads/products/<%= p.image %>" class="card-img-top product-img" alt="<%= p.name %>">
+                </a>
+                <div class="card-body">
+                    <a class="text-decoration-none" href="/products/<%= p.id %>">
+
+                    <h5 class="card-title"><%= p.name %></h5>
+                    </a>
+                    <a class="text-decoration-none" href="/products/<%= p.id %>">
+
+                    <p class="card-text">Rs. <%= p.price %></p>
+                </a>
+                    <a class="text-decoration-none" href="/products/<%= p.id %>">
+
+                    <p class="card-text text-muted"><%= p.condition %> | <%= p.category_name %></p>
+                </a>
+                </div>
+            </div>
+        </div>
+    <% }) %>
+</div>
+
+<hr>
+
+<h3 class="mt-5">Add New Product</h3>
+<form action="/products/create" method="POST" enctype="multipart/form-data" class="row g-3">
+    <div class="col-md-6">
+        <input type="text" name="name" class="form-control" placeholder="Product name" required>
+    </div>
+    <div class="col-md-6">
+        <textarea name="description" class="form-control" placeholder="Description" required></textarea>
+    </div>
+    <div class="col-md-3">
+        <input type="number" name="price" class="form-control" placeholder="Price" required>
+    </div>
+    <div class="col-md-3">
+        <select name="condition" class="form-select" required>
+            <option value="">Select Condition</option>
+            <option value="Used">Used</option>
+            <option value="Refurbished">Refurbished</option>
+        </select>
+    </div>
+    <div class="col-md-4">
+        <select name="category_id" class="form-select" required>
+            <option value="">Select Category</option>
+            <% categories.forEach(c => { %>
+                <option value="<%= c.id %>"><%= c.name %></option>
+            <% }) %>
+        </select>
+    </div>
+    <div class="col-md-4">
+        <input type="file" name="image" class="form-control" required>
+    </div>
+    <div class="col-md-4">
+        <input type="number" name="stock" class="form-control" placeholder="Stock" required>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-success">Add Product</button>
+    </div>
+</form>
+
+<%- include('../partials/_footer') %>

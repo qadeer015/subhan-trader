@@ -1,0 +1,10 @@
+.alertContainer{
+        top: 2%;
+        right: 2%;
+}
+
+.messageContainer{
+        width: fit-content;
+        padding: 5px;
+        z-index: 1000;
+}

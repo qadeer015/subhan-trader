@@ -1,0 +1,64 @@
+<h2>Contact Us</h2>
+<form id="contact-us-form" class="row g-3">
+    <div class="col-md-6">
+        <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+    </div>
+    <div class="col-md-6">
+        <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+    </div>
+    <div class="col-12">
+        <textarea name="message" rows="5" class="form-control" placeholder="Your Message" required></textarea>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Send Message</button>
+    </div>
+    <div class="col-12">
+        <div id="form-response" class="alert d-none"></div>
+    </div>
+</form>
+
+<script>
+document.getElementById('contact-us-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const form = e.target;
+    const formData = new FormData(form);
+    const submitButton = form.querySelector('button[type="submit"]');
+    const responseDiv = document.getElementById('form-response');
+    
+    // Clear previous messages and show loading state
+    responseDiv.classList.add('d-none');
+    submitButton.disabled = true;
+    submitButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
+    
+    try {
+        const response = await fetch('/contact/submit', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(Object.fromEntries(formData))
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok) {
+            // Success case
+            showAlert(result.message, "success")
+            form.reset();
+        } else {
+            // Error case
+            showAlert('Failed to send message. Please try again.', "error")
+        }
+    } catch (error) {
+        // Network error case
+        showAlert('Network error. Please check your connection and try again.', "error")
+        console.error('Error:', error);
+    } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Send Message';
+        responseDiv.classList.remove('d-none');
+    }
+});
+</script>

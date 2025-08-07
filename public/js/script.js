@@ -68,15 +68,15 @@ document.addEventListener('DOMContentLoaded', () => {
 window.onscroll = function () { myFunction() };
 
 var navbar = document.getElementById("navbar");
-var sticky = navbar.offsetTop;
+// var sticky = navbar.offsetTop;
 
-function myFunction() {
-    if (window.scrollY >= sticky) {
-        navbar.classList.add("sticky")
-    } else {
-        navbar.classList.remove("sticky");
-    }
-}
+// function myFunction() {
+//     if (window.scrollY >= sticky) {
+//         navbar.classList.add("sticky")
+//     } else {
+//         navbar.classList.remove("sticky");
+//     }
+// }
 var navContainer = document.getElementById("navbar");
 var tabs = navContainer.getElementsByClassName("tabs");
 for (var i = 0; i < tabs.length; i++) {
