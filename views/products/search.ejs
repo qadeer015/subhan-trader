@@ -1,0 +1,124 @@
+<%- include('../partials/_header') %>
+
+<div class="container my-5">
+    <div class="row mb-4">
+        <div class="col">
+            <h2>Search Results</h2>
+            <% if (products.length === 0) { %>
+                <div class="alert alert-info">No products found matching your criteria.</div>
+            <% } else { %>
+                <p class="text-muted"><%= products.length %> products found</p>
+            <% } %>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Search Filters Sidebar -->
+        <div class="col-md-3">
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Refine Search</h5>
+                </div>
+                <div class="card-body">
+                    <form action="/search" method="GET">
+                        <!-- Search Query -->
+                        <div class="mb-3">
+                            <label for="searchQuery" class="form-label">Search Term</label>
+                            <input type="text" class="form-control" id="searchQuery" name="q" 
+                                   value="<%= searchQuery || '' %>" placeholder="Enter keywords">
+                        </div>
+
+                        <!-- Category Filter -->
+                        <div class="mb-3">
+                            <label class="form-label">Category</label>
+                            <select name="category" class="form-select">
+                                <option value="">All Categories</option>
+                                <% categories.forEach(c => { %>
+                                    <option value="<%= c.id %>" 
+                                        <%= selectedCategory == c.id ? 'selected' : '' %>>
+                                        <%= c.name %>
+                                    </option>
+                                <% }); %>
+                            </select>
+                        </div>
+
+                        <!-- Price Range -->
+                        <div class="mb-3">
+                            <label class="form-label">Price Range</label>
+                            <div class="row g-2">
+                                <div class="col">
+                                    <input type="number" name="minPrice" class="form-control" 
+                                           placeholder="Min" value="<%= minPrice || '' %>">
+                                </div>
+                                <div class="col">
+                                    <input type="number" name="maxPrice" class="form-control" 
+                                           placeholder="Max" value="<%= maxPrice || '' %>">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Condition Filter -->
+                        <div class="mb-3">
+                            <label class="form-label">Condition</label>
+                            <select name="condition" class="form-select">
+                                <option value="">Any Condition</option>
+                                <option value="new" <%= condition === 'new' ? 'selected' : '' %>>New</option>
+                                <option value="used" <%= condition === 'used' ? 'selected' : '' %>>Used</option>
+                                <option value="refurbished" <%= condition === 'refurbished' ? 'selected' : '' %>>Refurbished</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Apply Filters</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Results -->
+        <div class="col-md-9">
+            <% if (products.length > 0) { %>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <% products.forEach(product => { %>
+                        <div class="col">
+                            <div class="card h-100">
+                                <% if (product.image) { %>
+                                    <img src="/uploads/products/<%= product.image %>" class="card-img-top" alt="<%= product.name %>">
+                                <% } else { %>
+                                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                                        <span class="text-muted">No image</span>
+                                    </div>
+                                <% } %>
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= product.name %></h5>
+                                    <p class="card-text text-muted mb-1">
+                                        <small>Category: <%= product.category_name %></small>
+                                    </p>
+                                    <p class="card-text text-muted mb-1">
+                                        <small>Condition: <%= product.condition %></small>
+                                    </p>
+                                    <% if (product.rating) { %>
+                                        <div class="mb-2">
+                                            <% for(let i=1; i<=5; i++) { %>
+                                                <% if(i <= Math.floor(product.rating)) { %>
+                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                <% } else if(i === Math.ceil(product.rating) && product.rating % 1 > 0) { %>
+                                                    <i class="bi bi-star-half text-warning"></i>
+                                                <% } else { %>
+                                                    <i class="bi bi-star text-warning"></i>
+                                                <% } %>
+                                            <% } %>
+                                            <span class="ms-1"><%= product.rating %></span>
+                                        </div>
+                                    <% } %>
+                                    <h5 class="text-success">$<%= product.price %></h5>
+                                    <a href="/products/<%= product.id %>" class="btn btn-sm btn-primary">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</div>
+<%- include('../partials/_footer') %>
