@@ -46,6 +46,7 @@ nav ul {
   top: 0;
   width: 100%;
   z-index: 1;
+  transition: 0.5s;
 }
 nav ul li {
     display: inline;
@@ -254,6 +255,20 @@ h3{
 }
 .mobile{
     display: none;
+}
+.sale-message{
+    padding: 40px 0px;
+    background-color: #007bff9c;
+    text-align: center;
+    font-weight: 700;
+    font-size: 28px;
+    color: rgb(241, 238, 238);
+    letter-spacing: 1px;
+    position: relative;
+    bottom: 130px;
+}
+.sale-message-wrapper{
+    overflow: hidden;
 }
 @media (max-width:1300px) {
     .location{

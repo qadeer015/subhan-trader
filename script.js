@@ -1,9 +1,13 @@
+let saleMessage = document.querySelector(".sale-message");
+
 document.addEventListener('DOMContentLoaded', () => {
     const contactLink = document.getElementById('contact-link');
     const popupContact = document.getElementById('contact-popup');
     const popupProduct = document.getElementById('product-popup');
     const closeBtns = document.querySelectorAll('.close');
     const viewProductBtns = document.querySelectorAll('.view-product');
+    saleMessage.style.bottom = "0px";
+    saleMessage.style.transition = "0.8s";
 
 
 
