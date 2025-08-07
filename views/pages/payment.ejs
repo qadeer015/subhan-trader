@@ -1,0 +1,248 @@
+<%- include('../partials/_header') %>
+
+<div class="container my-5">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card shadow">
+        <div class="card-body p-lg-5">
+          <h1 class="text-center mb-4">Payment Methods</h1>
+          <p class="text-center text-muted mb-5">Secure payment options for your orders</p>
+
+          <div class="alert alert-primary">
+            <h4 class="alert-heading"><i class="bi bi-shield-lock me-2"></i>Secure Transactions</h4>
+            <p class="mb-0">All payments are processed through PCI-DSS compliant systems with SSL encryption for your security.</p>
+          </div>
+
+          <!-- Payment Methods Cards -->
+          <div class="row g-4 mb-5">
+            <!-- Cash on Delivery -->
+            <div class="col-md-6">
+              <div class="card h-100 border-success">
+                <div class="card-header bg-success text-white">
+                  <h4 class="mb-0"><i class="bi bi-cash-coin me-2"></i>Cash on Delivery</h4>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title text-success">Available for Lahore Orders</h5>
+                  <ul>
+                    <li>Pay when you receive your order</li>
+                    <li>Lahore only - up to PKR 200,000</li>
+                    <li>Driver carries limited change (please prepare exact amount)</li>
+                    <li>Requires photo ID verification</li>
+                  </ul>
+                  <div class="mt-3 p-3 bg-light rounded">
+                    <h6><i class="bi bi-info-circle-fill text-primary me-2"></i>Note:</h6>
+                    <p class="mb-0">For orders above PKR 200,000, 50% advance payment required via bank transfer.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bank Transfer -->
+            <div class="col-md-6">
+              <div class="card h-100 border-primary">
+                <div class="card-header bg-primary text-white">
+                  <h4 class="mb-0"><i class="bi bi-bank me-2"></i>Bank Transfer</h4>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title text-primary">Preferred for Bulk Orders</h5>
+                  <ul>
+                    <li>Direct transfer to our corporate account</li>
+                    <li>Send payment receipt via WhatsApp/SMS</li>
+                    <li>Processing time: 1-2 business hours</li>
+                    <li>No transaction fees</li>
+                  </ul>
+                  <div class="mt-3">
+                    <h6>Our Bank Details:</h6>
+                    <table class="table table-sm">
+                      <tr>
+                        <th>Bank Name:</th>
+                        <td>MCB Bank Limited</td>
+                      </tr>
+                      <tr>
+                        <th>Account Title:</th>
+                        <td>IBC Tank Store</td>
+                      </tr>
+                      <tr>
+                        <th>Account #:</th>
+                        <td>1234567890123</td>
+                      </tr>
+                      <tr>
+                        <th>IBAN:</th>
+                        <td>PK36MCBL1234567890123456</td>
+                      </tr>
+                      <tr>
+                        <th>Branch:</th>
+                        <td>Industrial Area Branch, Lahore</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mobile Payments -->
+            <div class="col-md-6">
+              <div class="card h-100 border-warning">
+                <div class="card-header bg-warning text-dark">
+                  <h4 class="mb-0"><i class="bi bi-phone me-2"></i>Mobile Payments</h4>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title text-warning">Instant Payment Options</h5>
+                  <div class="row">
+                    <div class="col-6 mb-3 text-center">
+                      <img src="/images/jazzcash-logo.png" alt="JazzCash" class="img-fluid mb-2" style="height: 30px;">
+                      <p class="mb-1">Send to:</p>
+                      <strong>0300 1234567</strong>
+                    </div>
+                    <div class="col-6 mb-3 text-center">
+                      <img src="/images/easypaisa-logo.png" alt="EasyPaisa" class="img-fluid mb-2" style="height: 30px;">
+                      <p class="mb-1">Send to:</p>
+                      <strong>0300 1234567</strong>
+                    </div>
+                  </div>
+                  <div class="mt-2">
+                    <ul>
+                      <li>Max PKR 100,000 per transaction</li>
+                      <li>Send payment receipt via WhatsApp</li>
+                      <li>Orders processed after confirmation</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Credit/Debit Cards -->
+            <div class="col-md-6">
+              <div class="card h-100 border-danger">
+                <div class="card-header bg-danger text-white">
+                  <h4 class="mb-0"><i class="bi bi-credit-card me-2"></i>Credit/Debit Cards</h4>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title text-danger">Secure Online Payments</h5>
+                  <div class="d-flex flex-wrap gap-2 mb-3">
+                    <img src="/images/visa-logo.png" alt="Visa" style="height: 25px;">
+                    <img src="/images/mastercard-logo.png" alt="Mastercard" style="height: 25px;">
+                    <img src="/images/unionpay-logo.png" alt="UnionPay" style="height: 25px;">
+                  </div>
+                  <ul>
+                    <li>3D Secure authentication</li>
+                    <li>2% processing fee applies</li>
+                    <li>Instant order confirmation</li>
+                    <li>Chargeback protection</li>
+                  </ul>
+                  <div class="mt-3 p-3 bg-light rounded">
+                    <h6><i class="bi bi-shield-check text-primary me-2"></i>Security Guarantee</h6>
+                    <p class="mb-0">We never store your card details. All transactions processed through HBL Payment Gateway.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payment FAQs -->
+          <div class="mb-5">
+            <h2 class="mb-3 border-bottom pb-2">Payment FAQs</h2>
+            <div class="accordion" id="paymentAccordion">
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="paymentHeadingOne">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#paymentCollapseOne">
+                    Is there any discount for bank transfers?
+                  </button>
+                </h3>
+                <div id="paymentCollapseOne" class="accordion-collapse collapse show" aria-labelledby="paymentHeadingOne" data-bs-parent="#paymentAccordion">
+                  <div class="accordion-body">
+                    Yes! We offer 2% discount on bulk orders (above PKR 500,000) when paying via bank transfer. This helps us save on payment processing fees which we pass on to you.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="paymentHeadingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#paymentCollapseTwo">
+                    How can I verify your bank account details?
+                  </button>
+                </h3>
+                <div id="paymentCollapseTwo" class="accordion-collapse collapse" aria-labelledby="paymentHeadingTwo" data-bs-parent="#paymentAccordion">
+                  <div class="accordion-body">
+                    For security, we recommend:
+                    <ol>
+                      <li>Call our verified number <strong>0300 1234567</strong> to confirm details</li>
+                      <li>Visit our Lahore office to collect bank letter</li>
+                      <li>Make a small test transfer first (PKR 100-500)</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="paymentHeadingThree">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#paymentCollapseThree">
+                    Why was my card payment declined?
+                  </button>
+                </h3>
+                <div id="paymentCollapseThree" class="accordion-collapse collapse" aria-labelledby="paymentHeadingThree" data-bs-parent="#paymentAccordion">
+                  <div class="accordion-body">
+                    Common reasons include:
+                    <ul>
+                      <li>Daily transaction limit exceeded (contact your bank)</li>
+                      <li>International cards not accepted (Pakistani cards only)</li>
+                      <li>3D Secure authentication not completed</li>
+                      <li>Insufficient funds</li>
+                    </ul>
+                    Try mobile payment or bank transfer as alternatives.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payment Security -->
+          <div class="mb-4">
+            <h2 class="mb-3 border-bottom pb-2">Payment Security</h2>
+            <div class="row">
+              <div class="col-md-4 mb-3">
+                <div class="card h-100 border-0 shadow-sm">
+                  <div class="card-body text-center">
+                    <i class="bi bi-encryption display-4 text-primary mb-3"></i>
+                    <h5>SSL Encryption</h5>
+                    <p class="mb-0">All online payments protected with 256-bit encryption</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="card h-100 border-0 shadow-sm">
+                  <div class="card-body text-center">
+                    <i class="bi bi-shield-check display-4 text-primary mb-3"></i>
+                    <h5>PCI DSS Compliant</h5>
+                    <p class="mb-0">Certified secure payment processing</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="card h-100 border-0 shadow-sm">
+                  <div class="card-body text-center">
+                    <i class="bi bi-receipt-cutoff display-4 text-primary mb-3"></i>
+                    <h5>Payment Receipts</h5>
+                    <p class="mb-0">Automated SMS/email confirmation for every transaction</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payment Help -->
+          <div class="alert alert-info">
+            <h4 class="alert-heading">Payment Assistance</h4>
+            <p class="mb-1">Having trouble with payment? Contact our support team:</p>
+            <ul class="mb-0">
+              <li><i class="bi bi-telephone"></i> <a href="tel:+923001234567">0300 1234567</a> (Press 3 for Payments)</li>
+              <li><i class="bi bi-whatsapp"></i> <a href="https://wa.me/923001234567?text=Payment%20Help%20for%20Order%20">WhatsApp Payments Support</a></li>
+              <li><i class="bi bi-envelope"></i> <a href="mailto:payments@ibctankstore.com">payments@ibctankstore.com</a></li>
+              <li><i class="bi bi-clock"></i> Payment Support Hours: 9AM-6PM (Mon-Sat)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/_footer') %>

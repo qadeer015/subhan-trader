@@ -1,0 +1,262 @@
+<%- include('../partials/_header') %>
+
+<div class="container my-5">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card shadow">
+        <div class="card-body p-lg-5">
+          <h1 class="text-center mb-4">Order Cancellation Policy</h1>
+          <p class="text-center text-muted mb-5">Last Updated: <%= new Date().toLocaleDateString() %></p>
+
+          <div class="alert alert-warning">
+            <h4 class="alert-heading"><i class="bi bi-exclamation-triangle-fill me-2"></i>Important Industrial Product Notice</h4>
+            <p class="mb-0">
+              Due to the specialized nature of IBC tanks, chemical drums, and Sumandri Jhag insulation materials, our cancellation policy differs from standard consumer goods.
+            </p>
+          </div>
+
+          <!-- Cancellation Timeframes -->
+          <div class="mb-5">
+            <h2 class="mb-3 border-bottom pb-2">1. Cancellation Timeframes</h2>
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead class="table-light">
+                  <tr>
+                    <th>Order Status</th>
+                    <th>Cancellation Window</th>
+                    <th>Refund Eligibility</th>
+                    <th>Processing Fee</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Before Processing</td>
+                    <td>Within 2 hours of order</td>
+                    <td>100% refund</td>
+                    <td>None</td>
+                  </tr>
+                  <tr>
+                    <td>Processing Started</td>
+                    <td>Before shipping</td>
+                    <td>85% refund</td>
+                    <td>15% restocking</td>
+                  </tr>
+                  <tr>
+                    <td>Shipped</td>
+                    <td>Cannot cancel</td>
+                    <td>Return possible*</td>
+                    <td>See return policy</td>
+                  </tr>
+                  <tr>
+                    <td>Custom/Bulk Orders</td>
+                    <td>Non-cancellable</td>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="mt-3 p-3 bg-light rounded">
+              <p class="mb-0"><strong>*Note:</strong> Shipped orders may be returned only if defective or incorrect. See our <a href="/returns-and-refunds">Return Policy</a> for details.</p>
+            </div>
+          </div>
+
+          <!-- Cancellation Process -->
+          <div class="mb-5">
+            <h2 class="mb-3 border-bottom pb-2">2. How to Cancel an Order</h2>
+            <div class="row g-4">
+              <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                  <div class="card-body text-center">
+                    <div class="bg-primary bg-opacity-10 rounded-circle p-3 mb-3 d-inline-block">
+                      <i class="bi bi-1-circle display-6 text-primary"></i>
+                    </div>
+                    <h5>Immediate Contact</h5>
+                    <p>Call <a href="tel:+923001234567">0300 1234567</a> (Press 4 for Cancellations) as soon as possible</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                  <div class="card-body text-center">
+                    <div class="bg-primary bg-opacity-10 rounded-circle p-3 mb-3 d-inline-block">
+                      <i class="bi bi-2-circle display-6 text-primary"></i>
+                    </div>
+                    <h5>Provide Details</h5>
+                    <p>Have your order number and payment method ready</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                  <div class="card-body text-center">
+                    <div class="bg-primary bg-opacity-10 rounded-circle p-3 mb-3 d-inline-block">
+                      <i class="bi bi-3-circle display-6 text-primary"></i>
+                    </div>
+                    <h5>Confirmation</h5>
+                    <p>Receive SMS/email confirmation of cancellation</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Refund Processing -->
+          <div class="mb-5">
+            <h2 class="mb-3 border-bottom pb-2">3. Refund Processing</h2>
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="card h-100 border-success">
+                  <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="bi bi-arrow-counterclockwise me-2"></i>Refund Methods</h5>
+                  </div>
+                  <div class="card-body">
+                    <ul>
+                      <li><strong>Credit/Debit Cards:</strong> 5-7 business days to reflect</li>
+                      <li><strong>Bank Transfer:</strong> 3-5 business days (provide IBAN)</li>
+                      <li><strong>JazzCash/EasyPaisa:</strong> Within 24 hours</li>
+                      <li><strong>Store Credit:</strong> Immediate (with 5% bonus)</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="card h-100 border-primary">
+                  <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="bi bi-clock-history me-2"></i>Processing Times</h5>
+                  </div>
+                  <div class="card-body">
+                    <ul>
+                      <li><strong>Standard Cancellations:</strong> 1 business day to process</li>
+                      <li><strong>Bulk Orders:</strong> 3-5 business days</li>
+                      <li><strong>Bank Holidays:</strong> Delays may occur</li>
+                      <li><strong>International Cards:</strong> Additional 2-3 days</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Special Cases -->
+          <div class="mb-5">
+            <h2 class="mb-3 border-bottom pb-2">4. Special Cases</h2>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <div class="card h-100 border-danger">
+                  <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0"><i class="bi bi-truck me-2"></i>Custom/Bulk Orders</h5>
+                  </div>
+                  <div class="card-body">
+                    <p>Orders exceeding PKR 500,000 or custom-configured items:</p>
+                    <ul>
+                      <li>50% non-refundable deposit required</li>
+                      <li>No cancellations after production begins</li>
+                      <li>Case-by-case exceptions may apply</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="card h-100 border-warning">
+                  <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0"><i class="bi bi-droplet me-2"></i>Used Chemical Drums</h5>
+                  </div>
+                  <div class="card-body">
+                    <p>Special cancellation terms apply:</p>
+                    <ul>
+                      <li>No cancellations after cleaning process begins</li>
+                      <li>25% restocking fee if cancelled before shipping</li>
+                      <li>Must disclose original chemical contents</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cancellation FAQs -->
+          <div class="mb-5">
+            <h2 class="mb-3 border-bottom pb-2">5. Cancellation FAQs</h2>
+            <div class="accordion" id="cancellationAccordion">
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="cancelHeadingOne">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#cancelCollapseOne">
+                    Why was I charged a restocking fee?
+                  </button>
+                </h3>
+                <div id="cancelCollapseOne" class="accordion-collapse collapse show" aria-labelledby="cancelHeadingOne" data-bs-parent="#cancellationAccordion">
+                  <div class="accordion-body">
+                    Industrial products require special handling:
+                    <ul>
+                      <li>IBC tanks must be re-inspected and re-palletized</li>
+                      <li>Sumandri Jhag rolls undergo quality re-check</li>
+                      <li>Warehouse space allocation costs</li>
+                      <li>Administrative processing</li>
+                    </ul>
+                    The 15% fee covers these operational costs.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="cancelHeadingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cancelCollapseTwo">
+                    Can I cancel part of my order?
+                  </button>
+                </h3>
+                <div id="cancelCollapseTwo" class="accordion-collapse collapse" aria-labelledby="cancelHeadingTwo" data-bs-parent="#cancellationAccordion">
+                  <div class="accordion-body">
+                    Partial cancellations are permitted only if:
+                    <ol>
+                      <li>Requested within 2 hours of ordering</li>
+                      <li>Items haven't entered processing</li>
+                      <li>Minimum order value (PKR 25,000) is maintained</li>
+                    </ol>
+                    <p class="mb-0">For bulk orders, partial cancellations may incur a 10% fee on cancelled items.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="cancelHeadingThree">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cancelCollapseThree">
+                    What if my order is delayed?
+                  </button>
+                </h3>
+                <div id="cancelCollapseThree" class="accordion-collapse collapse" aria-labelledby="cancelHeadingThree" data-bs-parent="#cancellationAccordion">
+                  <div class="accordion-body">
+                    For delays beyond our control (transport strikes, weather):
+                    <ul>
+                      <li>Free cancellation with full refund</li>
+                      <li>Option to wait with 5% discount</li>
+                      <li>Priority rescheduling</li>
+                    </ul>
+                    For delays caused by us:
+                    <ul>
+                      <li>Free upgrade to expedited shipping</li>
+                      <li>5% credit on future orders</li>
+                      <li>Daily updates until delivery</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cancellation Assistance -->
+          <div class="alert alert-info">
+            <h4 class="alert-heading">Need to Cancel an Order?</h4>
+            <p class="mb-1">Contact our cancellations department immediately:</p>
+            <ul class="mb-0">
+              <li><i class="bi bi-telephone"></i> <a href="tel:+923001234567">0300 1234567</a> (Press 4 for Cancellations)</li>
+              <li><i class="bi bi-whatsapp"></i> <a href="https://wa.me/923001234567?text=Cancellation%20Request%20for%20Order%20">WhatsApp Cancellations</a></li>
+              <li><i class="bi bi-envelope"></i> <a href="mailto:cancellations@ibctankstore.com">cancellations@ibctankstore.com</a></li>
+              <li><i class="bi bi-clock"></i> Cancellation Hours: 8AM-8PM (Mon-Sat)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/_footer') %>
