@@ -2,12 +2,22 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
-require('dotenv').config();
+const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 const Product = require('./models/Product');
 const Category = require('./models/Category');
-const productController = require('./controllers/productsController');
+
+// Routes
+const productRoutes = require('./routes/productRoutes');
+const categoryRoutes = require('./routes/categoryRoutes');
+const contactRoutes = require('./routes/contactRoutes');
+const pageRoutes = require('./routes/pageRoutes');
+const authRoutes = require("./routes/authRoutes");
+const adminRoutes = require("./routes/adminRoutes");
+
+require('dotenv').config();
+require('./config/passport');
 
 // View engine setup
 app.set('view engine', 'ejs');
@@ -17,27 +27,30 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+// Session configuration
 app.use(session({
     secret: process.env.SESSION_SECRET || 'your-secret-key',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: process.env.NODE_ENV === 'production' }
+    cookie: { 
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: 24 * 60 * 60 * 1000 // 1 day
+    }
 }));
+
+// Passport and flash middleware
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash());
 
-// Global variables
+// Global variables middleware (must come after flash)
 app.use((req, res, next) => {
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
+    res.locals.user = req.user || null; // Make user available in all views
     next();
 });
-
-// Routes
-const productRoutes = require('./routes/productRoutes');
-const categoryRoutes = require('./routes/categoryRoutes');
-const contactRoutes = require('./routes/contactRoutes');
-const pageRoutes = require('./routes/pageRoutes');
-
 
 // Enhanced Homepage with featured products, search and filters
 app.get('/', async (req, res) => {
@@ -52,11 +65,13 @@ app.get('/', async (req, res) => {
         const minPrice = parseFloat(req.query.minPrice) || 0;
         const maxPrice = parseFloat(req.query.maxPrice) || 1000;
         const condition = req.query.condition || '';
+        
         featuredProducts = featuredProducts.map(product => ({
             ...product,
             rating: parseFloat(product.rating).toFixed(1),
             price: parseFloat(product.price).toFixed(2)
         }));
+        
         latestProducts = latestProducts.map(product => ({
             ...product,
             rating: parseFloat(product.rating).toFixed(1),
@@ -72,7 +87,8 @@ app.get('/', async (req, res) => {
             selectedCategory,
             minPrice,
             maxPrice,
-            condition
+            condition,
+            user: req.user // Pass user to view
         });
     } catch (error) {
         console.error('Homepage error:', error);
@@ -104,7 +120,8 @@ app.get('/search', async (req, res) => {
             selectedCategory: category,
             minPrice,
             maxPrice,
-            condition
+            condition,
+            user: req.user // Pass user to view
         });
     } catch (error) {
         console.error('Search error:', error);
@@ -113,10 +130,20 @@ app.get('/search', async (req, res) => {
     }
 });
 
+// Routes
 app.use('/', pageRoutes);
 app.use('/products', productRoutes);
 app.use('/categories', categoryRoutes);
 app.use('/contact', contactRoutes);
+app.use("/auth", authRoutes);
+app.use("/admin", adminRoutes);
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    req.flash('error', 'Something went wrong!');
+    res.status(500).redirect('/');
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
