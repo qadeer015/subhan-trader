@@ -1,0 +1,29 @@
+<%- include('../partials/_header') %>
+<div class="min-vh-100 bg-light d-flex flex-column justify-content-center py-5 px-3">
+  <div class="mx-auto text-center" style="max-width: 400px;">
+    <h2 class="display-5 fw-bold text-dark mb-3">
+      Welcome Back
+    </h2>
+    <p class="text-muted mb-5 fs-5">
+      Sign in with your Google account to continue
+    </p>
+    
+    <%- include('../partials/_messages', { messages: locals.messages || {} }) %>
+    
+    <div class="mt-4">
+      <a href="/auth/google" 
+         class="btn btn-outline-dark bg-white text-dark fw-semibold py-2 px-4 rounded-3 shadow-sm d-flex align-items-center justify-content-center mx-auto" 
+         style="max-width: 240px;">
+        <svg class="bi me-2" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12.545 10.239v3.821h5.445c-0.712 2.315-2.647 3.972-5.445 3.972-3.332 0-6.033-2.701-6.033-6.032s2.701-6.032 6.033-6.032c1.498 0 2.866 0.549 3.921 1.453l2.814-2.814c-1.786-1.667-4.166-2.685-6.735-2.685-5.522 0-10 4.477-10 10s4.478 10 10 10c8.396 0 10-7.524 10-10 0-0.61-0.056-1.083-0.123-1.556h-9.877z"/>
+        </svg>
+        Sign in with Google
+      </a>
+    </div>
+    
+    <div class="mt-5 text-muted small">
+      By signing in, you agree to our <a href="/terms" class="text-primary text-decoration-none">Terms</a> and <a href="/privacy" class="text-primary text-decoration-none">Privacy Policy</a>
+    </div>
+  </div>
+</div>
+<%- include('../partials/_footer') %>
