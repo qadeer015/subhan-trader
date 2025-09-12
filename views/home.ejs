@@ -5,7 +5,7 @@
         <section clasxs="hero-section mb-5">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <h1 class="display-4 fw-bold">Find Amazing Products</h1>
+                    <h1 class="display-4 fw-bold">Find Amazing IBC Tanks</h1>
                     <p class="lead">Discover the best deals on quality items</p>
                 </div>
                 <div class="col-md-6">
@@ -37,21 +37,25 @@
                                 <a class="text-decoration-none text-dark" href="/products/<%= product.id %>">
                                     <h5 class="card-title"><%= product.name %></h5>
                                 </a>
-                                <div class="rating mb-2">
-                                    <% for(let i=1; i<=5; i++) { %>
-                                        <% if(i <= Math.floor(product.rating)) { %>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                        <% } else if(i === Math.ceil(product.rating) && product.rating % 1 > 0) { %>
-                                            <i class="bi bi-star-half text-warning"></i>
-                                        <% } else { %>
-                                            <i class="bi bi-star text-warning"></i>
-                                        <% } %>
-                                    <% } %>
-                                    <span class="ms-1"><%= product.rating %></span>
-                                </div>
+                                <div class="d-flex align-items-center justify-content-between">
+
                                 <a href="/products/<%= product.id %>" class="text-decoration-none text-dark">
                                     <p class="card-text text-success fw-bold">$<%= product.price %></p>
                                 </a>
+                                <div class="rating">
+                                    <% for(let i=1; i<=5; i++) { %>
+                                        <% if(i <= Math.floor(product.rating)) { %>
+                                            <i class="bi bi-star-fill text-warning ratting-star"></i>
+                                        <% } else if(i === Math.ceil(product.rating) && product.rating % 1 > 0) { %>
+                                            <i class="bi bi-star-half text-warning ratting-star"></i>
+                                        <% } else { %>
+                                            <i class="bi bi-star text-warning ratting-star"></i>
+                                        <% } %>
+                                    <% } %>
+                                    <span class="ms-1 d-sm-none"><%= product.rating %></span>
+                                </div>
+                                     
+                                </div>
                             </div>
                         </div>
                     </div>

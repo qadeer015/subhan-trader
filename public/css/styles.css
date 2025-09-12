@@ -23,3 +23,8 @@
         z-index: 1000;
         width: fit-content;
 }
+
+.ratting-star {
+        cursor: pointer;
+        font-size: 0.8rem;
+}

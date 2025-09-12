@@ -20,7 +20,6 @@ class Product {
             JOIN categories c ON p.category_id = c.id
             ORDER BY p.created_at DESC
         `;
-        console.log('Executing SQL:', sqlQuery); // Debug log
         const [rows] = await db.execute(sqlQuery);
         return rows;
     }
@@ -126,17 +125,17 @@ class Product {
                 sql += ` AND p.price <= ?`;
                 params.push(parseFloat(maxPrice));
             }
-            
+
             if (condition) {
-                sql += ` AND p.condition = ?`;
-                params.push(condition);
+                sql += ` AND LOWER(p.condition) = ?`;
+                params.push(condition.toLowerCase());
             }
             
             sql += ` ORDER BY p.created_at DESC`;
             
             const [rows] = await db.execute(sql, params);
             return rows;
-        } catch (error) {
+        } catch (error) {   
             console.error('Error in search:', error);
             throw error;
         }

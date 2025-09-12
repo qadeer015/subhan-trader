@@ -81,37 +81,40 @@
                     <% products.forEach(product => { %>
                         <div class="col">
                             <div class="card h-100">
+                                <a href="/products/<%= product.id %>" class="text-decoration-none">
                                 <% if (product.image) { %>
-                                    <img src="/uploads/products/<%= product.image %>" class="card-img-top" alt="<%= product.name %>">
+                                    <img src="/uploads/products/<%= product.image %>" class="card-img-top product-img" alt="<%= product.name %>">
                                 <% } else { %>
                                     <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
                                         <span class="text-muted">No image</span>
                                     </div>
                                 <% } %>
+                                </a>
                                 <div class="card-body">
-                                    <h5 class="card-title"><%= product.name %></h5>
-                                    <p class="card-text text-muted mb-1">
-                                        <small>Category: <%= product.category_name %></small>
-                                    </p>
-                                    <p class="card-text text-muted mb-1">
-                                        <small>Condition: <%= product.condition %></small>
-                                    </p>
+                                    <a href="/products/<%= product.id %>" class="text-decoration-none text-reset">
+                                        <h5 class="card-title"><%= product.name %></h5>
+                                    </a>
+                                    <a href="/products/<%= product.id %>" class="text-decoration-none text-reset">
+                                        <p class="card-text text-muted">
+                                            <small>Condition: <%= product.condition %></small>
+                                        </p>
+                                    </a>
+                                    <a href="/products/<%= product.id %>" class="text-decoration-none text-reset">
                                     <% if (product.rating) { %>
                                         <div class="mb-2">
                                             <% for(let i=1; i<=5; i++) { %>
                                                 <% if(i <= Math.floor(product.rating)) { %>
-                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                    <i class="bi bi-star-fill text-warning ratting-star"></i>
                                                 <% } else if(i === Math.ceil(product.rating) && product.rating % 1 > 0) { %>
-                                                    <i class="bi bi-star-half text-warning"></i>
+                                                    <i class="bi bi-star-half text-warning ratting-star"></i>
                                                 <% } else { %>
-                                                    <i class="bi bi-star text-warning"></i>
+                                                    <i class="bi bi-star text-warning ratting-star"></i>
                                                 <% } %>
                                             <% } %>
-                                            <span class="ms-1"><%= product.rating %></span>
                                         </div>
                                     <% } %>
-                                    <h5 class="text-success">$<%= product.price %></h5>
-                                    <a href="/products/<%= product.id %>" class="btn btn-sm btn-primary">View Details</a>
+                                        <h5 class="text-success">Rs.<%= product.price %></h5>
+                                    </a>
                                 </div>
                             </div>
                         </div>
