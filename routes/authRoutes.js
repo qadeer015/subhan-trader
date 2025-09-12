@@ -20,9 +20,14 @@ router.delete('/logout', authController.logoutUser);
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 router.get('/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/auth/signin' }),  // Changed to /signin
+  passport.authenticate('google', { 
+    failureRedirect: '/auth/signin',
+    failureFlash: true
+  }),
   (req, res) => {
-    res.redirect('/');
+    req.session.save(() => {  // Explicitly save session
+      res.redirect('/');
+    });
   }
 );
 module.exports = router;

@@ -32,10 +32,12 @@ app.use(bodyParser.json());
 app.use(session({
     secret: process.env.SESSION_SECRET || 'your-secret-key',
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: { 
-        secure: process.env.NODE_ENV === 'production',
-        maxAge: 24 * 60 * 60 * 1000 // 1 day
+        secure: false, // ← CHANGE TO FALSE IN DEVELOPMENT
+        maxAge: 24 * 60 * 60 * 1000,
+        sameSite: 'lax',
+        httpOnly: true
     }
 }));
 
@@ -101,7 +103,7 @@ app.get('/', async (req, res) => {
 app.get('/search', async (req, res) => {
     try {
         const { q, category, minPrice, maxPrice, condition } = req.query;
-        
+        console.log(req.query);
         const products = await Product.search({
             query: q,
             categoryId: category,
@@ -111,7 +113,7 @@ app.get('/search', async (req, res) => {
         });
         
         const categories = await Category.getAll();
-        
+        console.log('Search results:', products);
         res.render('products/search', {
             title: 'Search Results',
             products,
@@ -145,5 +147,4 @@ app.use((err, req, res, next) => {
     res.status(500).redirect('/');
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(process.env.PORT , () => console.log(`Server running on http://localhost:${process.env.PORT }`));

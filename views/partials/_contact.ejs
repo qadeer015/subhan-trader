@@ -13,7 +13,7 @@
         <textarea name="message" rows="3" class="form-control" placeholder="Your Message" required></textarea>
     </div>
     <div class="col-12">
-        <button type="submit" class="btn btn-primary">Send Message</button>
+        <button type="submit" class="btn btn-primary">Submit Message</button>
     </div>
 </form>
 
@@ -53,7 +53,7 @@ document.getElementById('contact-us-form').addEventListener('submit', async (e) 
         console.error('Error:', error);
     } finally {
         submitButton.disabled = false;
-        submitButton.textContent = 'Send Message';
+        submitButton.textContent = 'Submit Message';
     }
 });
 </script>

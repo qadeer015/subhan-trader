@@ -31,16 +31,27 @@
 <div class="row row-cols-1 row-cols-md-3 g-4">
     <% products.forEach(product => { %>
         <div class="col">
-            <div class="card align-items-center bg-secondary-subtle h-100">
-                <a class="text-decoration-none" href="/products/<%= product.id %>">
+            <div class="card product-card h-100">
+                <a class="text-decoration-none text-dark" href="/products/<%= product.id %>">
                     <img src="/uploads/products/<%= product.image %>" class="card-img-top product-img" alt="<%= product.name %>">
                 </a>
-                <div class="card-body w-100 text-start">
-                    <a class="text-decoration-none" href="/products/<%= product.id %>">
-                        <h5 class="card-title m-0"><%= product.name %></h5>
+                <div class="card-body">
+                    <a class="text-decoration-none text-dark" href="/products/<%= product.id %>">
+                        <h5 class="card-title"><%= product.name %></h5>
                     </a>
-                    <a class="text-decoration-none" href="/products/<%= product.id %>">
-                        <p class="card-text">Rs. <%= product.price %></p>
+                    <div class="rating mb-2">
+                        <% for(let i=1; i<=5; i++) { %>
+                            <% if(i <= Math.floor(product.rating)) { %>
+                                <i class="bi bi-star-fill text-warning"></i>
+                            <% } else if(i === Math.ceil(product.rating) && product.rating % 1 > 0) { %>
+                                <i class="bi bi-star-half text-warning"></i>
+                            <% } else { %>
+                                <i class="bi bi-star text-warning"></i>
+                            <% } %>
+                        <% } %>
+                    </div>
+                    <a class="text-decoration-none text-dark" href="/products/<%= product.id %>">
+                        <p class="card-text">Rs.<%= product.price %></p>
                     </a>
                 </div>
             </div>

@@ -1,0 +1,27 @@
+<%- include('../partials/_header') %>
+<div class="row">
+    <div class="col-12">
+        <h1>Dashboard</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <h2>Products</h2>
+        <ul>
+            <% products.forEach(product => { %>
+                <li><%= product.name %></li>
+            <% }) %>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <h2>Customers</h2>
+        <ul>
+            <% customers.forEach(customer => { %>
+                <li><%= customer.name %></li>
+            <% }) %>
+        </ul>
+    </div>
+</div>
+<%- include('../partials/_footer') %>

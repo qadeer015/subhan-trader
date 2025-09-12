@@ -62,12 +62,15 @@ passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 
+// In config/passport.js
 passport.deserializeUser(async (id, done) => {
+  console.log("Deserializing user ID:", id); // Add this line
   try {
     const [users] = await db.query('SELECT * FROM users WHERE id = ?', [id]);
     if (users.length === 0) {
       return done(new Error('User not found'));
     }
+    console.log("Found user:", users[0]); // Add this line
     done(null, users[0]);
   } catch (error) {
     done(error);
