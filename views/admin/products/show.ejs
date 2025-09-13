@@ -1,0 +1,45 @@
+<%- include('../partials/_header') %>
+  <div class="px-lg-5 row">
+    <div class="col-lg-4">
+        <div class="card bg-secondary-subtle align-items-center">
+            <div class="card-body">
+                <img src="/uploads/products/<%= product.image %>" class="card-img-top product-img" alt="<%= product.name %>">
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title"><%= product.name %></h2>
+                <p class="card-text">
+                    <span class="fw-bold">Price: </span>
+                    <%= product.price %>
+                </p>
+                <p class="card-text">
+                    <span class="fw-bold">Stock: </span>
+                    <%- product.stock > 0 ? '<span class="badge bg-success">' +'In Stock' + '</span>' : '<span class="badge bg-danger">' + 'Out of Stock' + '</span>' %>                
+                </p>
+                <p class="card-text">
+                    <span class="fw-bold">Condition: </span>
+                    <%= product.condition %>
+                </p>
+                <div class="rating mb-2">
+                    <% for(let i=1; i<=5; i++) { %>
+                        <% if(i <= Math.floor(product.rating)) { %>
+                            <i class="bi bi-star-fill text-warning"></i>
+                        <% } else if(i === Math.ceil(product.rating) && product.rating % 1 > 0) { %>
+                            <i class="bi bi-star-half text-warning"></i>
+                        <% } else { %>
+                            <i class="bi bi-star text-warning"></i>
+                        <% } %>
+                    <% } %>
+                    <span class="ms-1"><%= product.rating %></span>
+                </div>
+                <p class="card-text">
+                    <%= product.description %>
+                </p>
+            </div>
+        </div>
+    </div>
+  </div>
+<%- include('../partials/_footer') %>

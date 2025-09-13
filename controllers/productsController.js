@@ -3,36 +3,45 @@ const Category = require('../models/Category');
 
 const productController = {
     // productController.js
-async list(req, res) {
-    try {
-        let products = await Product.getAll();
-        const categories = await Category.getAll();
+    async list(req, res) {
+        try {
+            let products = await Product.getAll();
+            const categories = await Category.getAll();
 
-        products = products.map(product => ({
-            ...product,
-            rating: parseFloat(product.rating).toFixed(1),
-            price: parseFloat(product.price).toFixed(2)
-        }));
-
-        res.render('products/index', { 
-            title: 'All Products', 
-            products, 
-            categories,
-            success: req.flash('success'),
-            error: req.flash('error')
-        });
-    } catch (error) {
-        console.error('Product list error:', error);  // Detailed error log
-        req.flash('error', 'Failed to fetch products');
-        res.redirect('/');
-    }
-},
+            products = products.map(product => ({
+                ...product,
+                rating: parseFloat(product.rating).toFixed(1),
+                price: parseFloat(product.price).toFixed(2)
+            }));
+            if (req.user && req.user.role === 'admin') {
+                return res.render('admin/products/index', {
+                    title: 'All Products',
+                    products,
+                    categories,
+                    success: req.flash('success'),
+                    error: req.flash('error')
+                });
+            } else {
+                res.render('products/index', {
+                    title: 'All Products',
+                    products,
+                    categories,
+                    success: req.flash('success'),
+                    error: req.flash('error')
+                });
+            }
+        } catch (error) {
+            console.error('Product list error:', error);  // Detailed error log
+            req.flash('error', 'Failed to fetch products');
+            res.redirect('/');
+        }
+    },
 
     async createForm(req, res) {
         const categories = await Category.getAll();
-        res.render('products/create', { 
+        res.render('admin/products/new', {
             title: 'Add New Product',
-            categories 
+            categories
         });
     },
 
@@ -40,11 +49,11 @@ async list(req, res) {
         try {
             const { name, description, price, category_id, condition, stock } = req.body;
             const image = req.file ? req.file.filename : null;
-            
+
             if (!image) {
                 throw new Error('Product image is required');
             }
-    
+
             const newProduct = await Product.create(
                 name,
                 description,
@@ -54,9 +63,9 @@ async list(req, res) {
                 condition,
                 stock
             );
-    
+
             req.flash('success', 'Product created successfully');
-            res.redirect(`/products/${newProduct.id}`);
+            res.redirect(`/admin/products/${newProduct.id}`);
         } catch (error) {
             console.error('Create error:', error);
             req.flash('error', error.message || 'Failed to create product');
@@ -76,10 +85,17 @@ async list(req, res) {
                 rating: parseFloat(product.rating).toFixed(1),
                 price: parseFloat(product.price).toFixed(2)
             };
-            res.render('products/show', { 
-                title: product.name, 
-                product 
-            });
+            if (req.user && req.user.role === 'admin') {
+                res.render('admin/products/show', {
+                    title: product.name,
+                    product
+                });
+            } else {
+                res.render('products/show', {
+                    title: product.name,
+                    product
+                });
+            }
         } catch (error) {
             req.flash('error', 'Failed to fetch product details');
             res.redirect('/products');
@@ -90,16 +106,15 @@ async list(req, res) {
         try {
             const product = await Product.getById(req.params.id);
             const categories = await Category.getAll();
-            
             if (!product) {
                 req.flash('error', 'Product not found');
                 return res.redirect('/products');
             }
 
-            res.render('products/edit', { 
-                title: `Edit ${product.name}`, 
+            res.render('admin/products/edit', {
+                title: `Edit ${product.name}`,
                 product,
-                categories 
+                categories
             });
         } catch (error) {
             req.flash('error', 'Failed to load edit form');
@@ -110,15 +125,17 @@ async list(req, res) {
     async update(req, res) {
         try {
             const { id } = req.params;
-            const { name, description, price, category_id, condition, stock, rating, existingImage } = req.body;
+            const { name, description, price, category_id, condition, stock, existingImage } = req.body;
             const image = req.file ? req.file.filename : existingImage;
-            console.log("image", image);
-            await Product.updateProduct(id, name, description, price, image, category_id, condition, stock, rating);
+            if (!image) {
+                throw new Error('Product image is required');
+            }
+            await Product.updateProduct(id, name, description, price, image, category_id, condition, stock);
             req.flash('success', 'Product updated successfully');
-            res.redirect(`/products/${id}`);
+            res.redirect(`/admin/products/${id}`);
         } catch (error) {
             req.flash('error', 'Failed to update product');
-            res.redirect(`/products/${req.params.id}/edit`);
+            res.redirect(`/admin/products/${req.params.id}/edit`);
         }
     },
 
@@ -126,13 +143,13 @@ async list(req, res) {
         try {
             const { id } = req.params;
             const deleted = await Product.delete(id);
-            
+
             if (deleted) {
                 req.flash('success', 'Product deleted successfully');
             } else {
                 req.flash('error', 'Product not found');
             }
-            res.redirect('/products');
+            res.redirect('/admin/products');
         } catch (error) {
             req.flash('error', 'Failed to delete product');
             res.redirect('/products');
@@ -144,8 +161,8 @@ async list(req, res) {
             const { categoryId } = req.params;
             const products = await Product.getByCategory(categoryId);
             const category = await Category.getById(categoryId);
-            
-            res.render('products/list', { 
+
+            res.render('products/list', {
                 title: `Products in ${category.name}`,
                 products,
                 currentCategory: categoryId

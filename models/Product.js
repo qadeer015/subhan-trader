@@ -80,10 +80,10 @@ class Product {
         }
     }
 
-    static async updateProduct(id, name, description, price, image, category_id, condition, stock, rating) {
+    static async updateProduct(id, name, description, price, image, category_id, condition, stock) {
         const [result] = await db.execute(
-            'UPDATE products SET name = ?, description = ?, price = ?, image = ?, category_id = ?, condition = ?, stock = ?, rating = ? WHERE id = ?',
-            [name, description, price, image, category_id, condition, stock, rating, id]
+            'UPDATE products SET name = ?, description = ?, price = ?, image = ?, category_id = ?, condition = ?, stock = ? WHERE id = ?',
+            [name, description, price, image, category_id, condition, stock, id]
         );
         return result;
     }
