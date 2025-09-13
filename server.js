@@ -103,7 +103,6 @@ app.get('/', async (req, res) => {
 app.get('/search', async (req, res) => {
     try {
         const { q, category, minPrice, maxPrice, condition } = req.query;
-        console.log(req.query);
         const products = await Product.search({
             query: q,
             categoryId: category,
@@ -113,7 +112,6 @@ app.get('/search', async (req, res) => {
         });
         
         const categories = await Category.getAll();
-        console.log('Search results:', products);
         res.render('products/search', {
             title: 'Search Results',
             products,

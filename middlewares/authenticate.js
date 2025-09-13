@@ -8,7 +8,7 @@ const isAuthenticated = (req, res, next) => {
       
       // Check if user is admin
       const isAdmin = (req, res, next) => {
-        if (req.isAuthenticated() && req.user.role === 'admin') {
+        if (req.user.role == 'admin') {
           return next();
         }
         req.flash('error', 'You do not have admin privileges');

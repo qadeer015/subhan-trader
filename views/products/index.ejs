@@ -59,45 +59,6 @@
     <% }) %>
 </div>
 
-<hr>
-
-<h3 class="mt-5">Add New Product</h3>
-<form action="/products/create" method="POST" enctype="multipart/form-data" class="row g-3">
-    <div class="col-md-6">
-        <input type="text" name="name" class="form-control" placeholder="Product name" required>
-    </div>
-    <div class="col-md-6">
-        <textarea name="description" class="form-control" placeholder="Description" required></textarea>
-    </div>
-    <div class="col-md-3">
-        <input type="number" name="price" class="form-control" placeholder="Price" required>
-    </div>
-    <div class="col-md-3">
-        <select name="condition" class="form-select" required>
-            <option value="">Select Condition</option>
-            <option value="Used">Used</option>
-            <option value="Refurbished">Refurbished</option>
-        </select>
-    </div>
-    <div class="col-md-4">
-        <select name="category_id" class="form-select" required>
-            <option value="">Select Category</option>
-            <% categories.forEach(category => { %>
-                <option value="<%= category.id %>"><%= category.name %></option>
-            <% }) %>
-        </select>
-    </div>
-    <div class="col-md-4">
-        <input type="file" name="image" class="form-control" required>
-    </div>
-    <div class="col-md-4">
-        <input type="number" name="stock" class="form-control" placeholder="Stock" required>
-    </div>
-    <div class="col-12">
-        <button type="submit" class="btn btn-success">Add Product</button>
-    </div>
-</form>
-
 </div>
 
 <%- include('../partials/_footer') %>

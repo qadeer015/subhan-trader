@@ -7,7 +7,6 @@ const contactController = {
 
     async submit(req, res) {
         const { name, email, message } = req.body;
-        console.log(req.body)
         await Contact.create(name, email, message);
         res.json({ success: true, message:"Your query submitted successfully." });
     },
