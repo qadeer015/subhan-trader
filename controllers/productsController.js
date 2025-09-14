@@ -15,7 +15,7 @@ const productController = {
             }));
             if (req.user && req.user.role === 'admin') {
                 return res.render('admin/products/index', {
-                    title: 'All Products',
+                    title: 'Products',
                     products,
                     categories,
                     success: req.flash('success'),
@@ -23,7 +23,7 @@ const productController = {
                 });
             } else {
                 res.render('products/index', {
-                    title: 'All Products',
+                    title: 'Products',
                     products,
                     categories,
                     success: req.flash('success'),

@@ -1,0 +1,39 @@
+    <% if (error.length>0) { %>
+        <div class="alert alert-danger px-4 py-3 rounded notification-alert">
+            <%= error %>
+        </div>
+    <% } %>
+    <% if (success.length>0) { %>
+        <div class="alert alert-success  px-4 py-3 rounded notification-alert">
+            <%= success %>
+        </div>
+    <% } %>
+
+
+    <style>
+        .notification-alert {
+            position: fixed;
+            top: 10%;
+            right: 5%;
+            z-index: 9999;
+            min-width: 250px;
+            max-width: 350px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeInOut 5s forwards;
+        }
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateX(400px); }
+            10% { opacity: 1; transform: translateX(0); }
+            90% { opacity: 1; transform: translateX(0); }
+            100% { opacity: 0; transform: translateX(400px); }
+        }
+    </style>
+
+    <script>
+        setTimeout(() => {
+            const alerts = document.querySelectorAll('.notification-alert');
+            alerts.forEach(alert => alert.remove());
+        }, 5000);
+    </script>
+
+

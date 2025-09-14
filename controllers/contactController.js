@@ -8,18 +8,21 @@ const contactController = {
     async submit(req, res) {
         const { name, email, message } = req.body;
         await Contact.create(name, email, message);
-        res.json({ success: true, message:"Your query submitted successfully." });
+        req.flash('success', 'Your query submitted successfully.');
+        res.json({ success: true });
     },
 
     async list(req, res) {
-        const messages = await Contact.getAll();
-        res.render('contact-messages', { title: 'Messages', messages });
+        const contacts = await Contact.getAll();
+        console.log(contacts);
+        res.render('admin/contact/index', { title: 'Contact Messages', contacts });
     },
 
     async delete(req, res) {
         const { id } = req.params;
         await Contact.delete(id);
-        res.redirect('/admin/messages');
+        req.flash('success', 'Message deleted successfully.');
+        res.redirect('/admin/contacts');
     }
 };
 
