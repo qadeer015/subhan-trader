@@ -1,0 +1,16 @@
+<%- include('../partials/_header') %>
+<div class="row">
+    <div class="col-12">
+        <h1>Customers</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <ul class="list-group">
+        <% customers.forEach(customer => { %>
+            <li class="list-group-item"><%= customer.name %></li>
+        <% }) %>
+        </ul>
+    </div>
+</div>
+<%- include('../partials/_footer') %>

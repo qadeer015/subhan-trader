@@ -30,16 +30,17 @@ app.use(bodyParser.json());
 
 // Session configuration
 app.use(session({
-    secret: process.env.SESSION_SECRET || 'your-secret-key',
-    resave: false,
-    saveUninitialized: false,
-    cookie: { 
-        secure: false, // ← CHANGE TO FALSE IN DEVELOPMENT
-        maxAge: 24 * 60 * 60 * 1000,
-        sameSite: 'lax',
-        httpOnly: true
-    }
+  secret: process.env.SESSION_SECRET || 'your-secret-key',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { 
+    secure: process.env.NODE_ENV === 'production',  // true on production
+    httpOnly: true,
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // allow cross-site redirect
+    maxAge: 24 * 60 * 60 * 1000
+  }
 }));
+
 
 // Passport and flash middleware
 app.use(passport.initialize());

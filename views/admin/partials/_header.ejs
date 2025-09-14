@@ -1,34 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title><%= title %> | IBC Hardware Store</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" /><!-- Link Swiper's CSS -->
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark mx-lg-5 p-0 position-sticky top-0 z-3">
-        <div class="container bg-dark p-2 rounded px-4">
-            <a class="navbar-brand" href="/">IBC Store</a>
-            <div>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="/products">Products</a></li>
-                    <li class="nav-item">
-                        <% if (user) { %>
-                            <img src="<%= user.profile_photo %>" alt="<%= user.name %>'s profile photo" class="rounded-circle" width="40" height="40">
-                        <% } else { %>
-                            <a class="nav-link text-white" href="/auth/signin">
-                                Signin
-                            </a>
-                        <% } %>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="author" content="Subhan Traders">
+    <meta name="description" content="IBC Hardware Store Admin Panel">
 
-    <main class="mx-lg-5 mx-md-3 mx-sm-1 p-0 py-4">
-      <div class="container">
-    
+  <title><%= title %> | IBC Hardware Store</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <style>
+    /* Sidebar base styles */
+    #sidebar {
+      transition: width 0.3s ease;
+      max-height: 60vh;
+      width: 240px;
+      background: #f8f9fa;
+      position: sticky;
+      top: calc(64px + 1rem); /* below navbar with some spacing */
+      border-radius: 0.25rem;
+      overflow-y: auto;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Shrinked sidebar (large screens) */
+    #sidebar.shrink {
+      width: 70px;
+    }
+
+    #sidebar .nav-link {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: clamp(0.9rem, 1.5vw, 1rem);
+    }
+
+    #sidebar.shrink .nav-link span {
+      display: none; /* hide text when shrinked */
+    }
+
+    #sidebar .nav-link i {
+      font-size: 1.2rem;
+    }
+
+    /* Mobile offcanvas */
+    @media (max-width: 991.98px) {
+      #sidebar {
+        position: fixed;
+        top: calc(64px + 1rem); /* below navbar */
+        left: -240px;
+        z-index: 1045;
+      }
+
+      #sidebar.show {
+        left: 0;
+      }
+    }
+
+    /* Sidebar toggle button */
+    .sidebar-toggle {
+      border: none;
+      background: transparent;
+      font-size: 1.5rem;
+      color: white;
+    }
+
+       /* Make dropdown open on hover */
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0; /* prevent navbar height increase */
+}
+
+/* Ensure dropdown is absolutely positioned */
+.navbar .dropdown-menu {
+  position: absolute !important;
+  top: 100%;
+  left: auto;
+  right: 0; /* align to right */
+  z-index: 1050;
+}
+
+/* Prevent cutoff at small screens */
+.dropdown-menu {
+  max-width: 90vw;
+  word-wrap: break-word;
+}
+  </style>
+</head>
+
+<body>
+  <div class="container">
+      <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 position-sticky top-0 z-3 rounded" style="height:64px;">
+    <a class="navbar-brand" href="/">IBC Store</a>
+
+    <!-- Sidebar toggle button (mobile) -->
+    <button class="sidebar-toggle d-lg-none ms-2" id="mobileSidebarToggle">
+      <i class="bi bi-list"></i>
+    </button>
+
+    <div class="ms-auto">
+      <ul class="navbar">
+        <li class="nav-item">
+          <% if (user) { %>
+          <div class="dropdown">
+            <button class="bg-transparent border-0 outline-0 d-flex align-items-center" type="button">
+              <% if (user.profile_photo) { %>
+              <img src="<%= user.profile_photo %>" alt="<%= user.name %>'s profile photo"
+                class="rounded-circle" width="40" height="40">
+              <% } else { %>
+              <span class="rounded-circle bg-secondary text-white d-inline-flex align-items-center justify-content-center"
+                style="width:40px; height:40px;">
+                <%= user.name.charAt(0).toUpperCase() %>
+              </span>
+              <% } %>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end shadow">
+              <li>
+                <div class="dropdown-item fw-semibold"><%= user.name %></div>
+              </li>
+              <li>
+                <form action="/auth/logout" method="POST">
+                  <input type="hidden" name="_method" value="DELETE">
+                  <button type="submit" class="dropdown-item">Sign out</button>
+                </form>
+              </li>
+            </ul>
+          </div>
+          <% } else { %>
+          <a class="nav-link text-white" href="/auth/signin">Signin</a>
+          <% } %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="d-flex">
+      <!-- Sidebar -->
+      <div id="sidebar" class="px-0 bg-primary-subtle rounded">
+        <div class="d-flex justify-content-between align-items-center p-2">
+          <span id="sidebarTitle" style="font-size: 1.5rem;" class="fw-bold">Menu</span>
+          <!-- Collapse button (large screens) -->
+          <button class="sidebar-toggle d-none d-lg-inline" id="desktopSidebarToggle">
+            <i class="bi bi-layout-sidebar-inset"></i>
+          </button>
+        </div>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2">
+            <a class="nav-link text-dark <% if (title === 'Dashboard') { %>fw-bold<% } %>"
+              href="/admin/dashboard">
+              <i class="bi bi-speedometer2"></i> <span class="ms-2">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item mb-2">
+            <a class="nav-link text-dark <% if (title === 'Products') { %>fw-bold<% } %>"
+              href="/admin/products">
+              <i class="bi bi-box-seam"></i> <span class="ms-2">Products</span>
+            </a>
+          </li>
+          <li class="nav-item mb-2">
+            <a class="nav-link text-dark <% if (title === 'Categories') { %>fw-bold<% } %>"
+              href="/admin/categories">
+              <i class="bi bi-tags"></i> <span class="ms-2">Categories</span>
+            </a>
+          </li>
+          <li class="nav-item mb-2">
+            <a class="nav-link text-dark <% if (title === 'Customers') { %>fw-bold<% } %>"
+              href="/admin/customers">
+              <i class="bi bi-people"></i> <span class="ms-2">Customers</span>
+            </a>
+          </li>
+          <li class="nav-item mb-2">
+            <a class="nav-link text-dark <% if (title === 'Contact Messages') { %>fw-bold<% } %>"
+              href="/admin/contacts">
+              <i class="bi bi-envelope"></i> <span class="ms-2">Contacts</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Main content -->
+      <div id="mainContent" class="flex-grow-1 pe-0">
+        <%- include('../../shared/_alerts') %>
+        <main class="p-4 min-vh-100">

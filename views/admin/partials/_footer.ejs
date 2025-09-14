@@ -1,11 +1,38 @@
+                </main>
+            </div>
+        </div>
     </div>
-</main>
+</div>
 
 <footer class="bg-dark text-white py-2 mt-auto">
     <div class="text-center">
         <small>&copy; 2025 IBC Store. All rights reserved.</small>
     </div>
 </footer>
+
+
+  <script>
+    const sidebar = document.getElementById("sidebar");
+    const linkElements = sidebar?.querySelectorAll(".nav-link");
+    const mobileSidebarToggle = document.getElementById("mobileSidebarToggle");
+    const desktopSidebarToggle = document.getElementById("desktopSidebarToggle");
+    const sidebarTitle = document.getElementById("sidebarTitle");
+
+    // Mobile toggle
+    mobileSidebarToggle?.addEventListener("click", () => {
+        sidebar.classList.toggle("show");
+    });
+
+    // Desktop toggle
+    desktopSidebarToggle?.addEventListener("click", () => {
+        sidebar.classList.toggle("shrink");
+            linkElements.forEach(link => {
+                link.classList.toggle("text-center");
+            });
+        sidebarTitle.classList.toggle("d-none");
+    });
+  </script>
+
 
 <script src="/js/notification.js"></script>
 <script src="/js/bootstrap.min.js"></script>

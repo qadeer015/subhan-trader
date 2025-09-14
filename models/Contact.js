@@ -21,6 +21,7 @@ class Contact {
     }
 
     static async delete(id) {
+        await db.execute('UPDATE contacts SET name = NULL, email = NULL, message = NULL WHERE id = ?', [id]);
         const result = await db.execute('DELETE FROM contacts WHERE id = ?', [id]);
         return result;
     }

@@ -41,15 +41,15 @@ document.getElementById('contact-us-form').addEventListener('submit', async (e) 
         
         if (response.ok) {
             // Success case
-            showAlert(result.message, "success")
             form.reset();
+            window.location.reload();
         } else {
             // Error case
-            showAlert('Failed to send message. Please try again.', "error")
+            alert('Failed to send message. Please try again.', "error")
         }
     } catch (error) {
         // Network error case
-        showAlert('Network error. Please check your connection and try again.', "error")
+        alert('Network error. Please check your connection and try again.', "error")
         console.error('Error:', error);
     } finally {
         submitButton.disabled = false;
