@@ -5,23 +5,29 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-12">
-        <h2>Products</h2>
-        <ul>
-            <% products.forEach(product => { %>
-                <li><%= product.name %></li>
-            <% }) %>
-        </ul>
+    <div class="col-md-4">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Contacts</h5>
+                <p class="card-text"><%= totalContacts %></p>
+            </div>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-12">
-        <h2>Customers</h2>
-        <ul>
-            <% customers.forEach(customer => { %>
-                <li><%= customer.name %></li>
-            <% }) %>
-        </ul>
+    <div class="col-md-4">
+        <div class="card text-white bg-success mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Products</h5>
+                <p class="card-text"><%= totalProducts %></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-danger mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Customers</h5>
+                <p class="card-text"><%= totalCustomers %></p>
+            </div>
+        </div>
     </div>
 </div>
 <%- include('partials/_footer') %>

@@ -8,7 +8,7 @@
     <div class="col-12">
         <ul class="list-group">
         <% customers.forEach(customer => { %>
-            <li class="list-group-item"><%= customer.name %></li>
+            <li class="list-group-item"><%= customer.name %> <span class="ms-3"><%= customer.created_at.toLocaleString() %></span></li>
         <% }) %>
         </ul>
     </div>

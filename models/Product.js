@@ -13,6 +13,11 @@ class Product {
         return rows[0];
     }
 
+    static async count() {
+        const [rows] = await db.execute('SELECT COUNT(*) AS count FROM products');
+        return rows[0].count;
+    }
+
     static async getAll() {
         const sqlQuery = `
             SELECT p.*, c.name AS category_name

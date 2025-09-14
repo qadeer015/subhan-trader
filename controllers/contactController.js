@@ -17,6 +17,16 @@ const contactController = {
         res.render('admin/contact/index', { title: 'Contact Messages', contacts });
     },
 
+    async getTotal(){
+        return await Contact.count();
+    },
+
+    async show(req, res) {
+        const { id } = req.params;
+        const contact = await Contact.getById(id);
+        res.render('admin/contact/show', { title: 'Contact Message', contact });
+    },
+
     async delete(req, res) {
         const { id } = req.params;
         await Contact.delete(id);

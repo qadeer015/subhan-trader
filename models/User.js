@@ -37,6 +37,11 @@ class User {
     return rows;
   }
 
+  static async count(role='customer') {
+    const [rows] = await db.execute('SELECT COUNT(*) AS count FROM users WHERE role = ?', [role]);
+    return rows[0].count;
+  }
+
 }
 
 module.exports = User;
