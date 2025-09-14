@@ -25,6 +25,11 @@ class Contact {
         const result = await db.execute('DELETE FROM contacts WHERE id = ?', [id]);
         return result;
     }
+
+    static async count() {
+        const [rows] = await db.execute('SELECT COUNT(*) AS count FROM contacts');
+        return rows[0].count;
+    }
 }
 
 module.exports = Contact;

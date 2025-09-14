@@ -12,9 +12,10 @@ router.use(isAdmin);
 
 router.get("/dashboard", async (req, res)=>{
       try{
-            let products = await Product.getAll();
-            let customers = await User.getAll('admin');
-            res.render("admin/dashboard", {products, customers, title:'Dashboard'});
+            let totalProducts = await Product.count();
+            let totalCustomers = await User.count('customer');
+            let totalContacts = await contactController.getTotal();
+            res.render("admin/dashboard", {totalProducts, totalCustomers, totalContacts, title:'Dashboard'});
       }catch(error){
           console.log(error);
       }
