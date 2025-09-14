@@ -26,6 +26,11 @@ class Contact {
         return result;
     }
 
+    static async getById(id) {
+        const [rows] = await db.execute('SELECT * FROM contacts WHERE id = ?', [id]);
+        return rows[0];
+    }
+
     static async count() {
         const [rows] = await db.execute('SELECT COUNT(*) AS count FROM contacts');
         return rows[0].count;

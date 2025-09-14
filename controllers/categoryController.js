@@ -3,7 +3,7 @@ const Category = require('../models/Category');
 const categoryController = {
     async list(req, res) {
         const categories = await Category.getAll();
-        res.render('admin/category/index', { title: 'Categories', categories });
+        res.render('admin/category/index', { title: 'Categories', categories, viewPage: 'categories' });
     },
 
     async create(req, res) {

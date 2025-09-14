@@ -4,43 +4,161 @@
         <h1>Contact Messages</h1>
     </div>
 </div>
+<% if(contacts.length > 0) {%>
+
 <div class="row">
-    <div class="col-12">
-        <table class="table table-bordered table-hover mt-3 align-middle table-responsive">
-            <thead class="table-dark">
-                <tr class="text-center">
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Message</th>
-                    <th>Date</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody class="table-group-divider">
-                <% contacts.forEach(contact => { %>
-                <tr>
-                    <td><%= contact.name %></td>
-                    <td><%= contact.email %></td>
-                    <td><%= contact.message %></td>
-                    <td><%= new Date(contact.created_at).toLocaleString() %></td>
-                    <td class="text-center">
-                        <div class="dropdown">
-                            <button class="btn btn-sm btn-outline-primary rounded-circle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-three-dots"></i>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <form action="/admin/contacts/<%= contact.id %>/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this message?');">
-                                        <button type="submit" class="dropdown-item text-danger">Delete</button>
-                                    </form>
-                                </li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                <% }) %>
-            </tbody>
-        </table>
+  <div class="col-12 mb-3 d-flex justify-content-between align-items-center">
+    <!-- Search -->
+    <input type="text" id="searchInput" class="form-control w-25" placeholder="Search contacts...">
+
+    <!-- Pagination -->
+    <nav>
+      <ul class="pagination mb-0" id="pagination"></ul>
+    </nav>
+  </div>
+
+  <div class="col-12">
+    <div class="table-responsive" style="min-height: 50vh;">
+      <table class="table table-bordered table-hover align-middle" id="contactsTable">
+        <thead class="table-light">
+          <tr class="text-center">
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody class="text-start" id="contactsBody">
+          <% if (contacts.length > 0) { %>
+            <% contacts.forEach(contact => { %>
+              <tr>
+                <td><%= contact.name %></td>
+                <td><%= contact.email %></td>
+                <td>
+                  <span class="d-inline-block text-truncate" style="max-width: 250px;"
+                        title="<%= contact.message %>">
+                    <%= contact.message %>
+                  </span>
+                </td>
+                <td class="text-center"><%= new Date(contact.created_at).toLocaleDateString() %></td>
+                <td class="text-center">
+                  <div class="dropdown">
+                    <button class="btn btn-sm btn-outline-primary rounded-circle"
+                            type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="bi bi-three-dots"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <a class="dropdown-item" href="/admin/contacts/<%= contact.id %>">
+                                <i class="bi bi-eye me-2 text-success"></i>View Details
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="mailto:<%= contact.email %>">
+                                <i class="bi bi-envelope me-2 text-primary"></i>Contact via Email
+                            </a>
+                        </li>
+                        <li>
+                            <form action="/admin/contacts/<%= contact.id %>/delete" method="POST"
+                                onsubmit="return confirm('Are you sure you want to delete this message?');">
+                                <button type="submit" class="dropdown-item text-danger">
+                                    <i class="bi bi-trash me-2"></i>Delete
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+            <% }) %>
+          <% } else { %>
+            <tr>
+              <td colspan="5" class="text-center text-muted py-4">
+                <i class="bi bi-chat-dots display-6 d-block mb-2"></i>
+                No messages yet.
+              </td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
     </div>
+  </div>
 </div>
+
+<!-- JS for Search + Pagination -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const rows = document.querySelectorAll("#contactsBody tr");
+    const rowsPerPage = 5; // adjust per page count
+    let currentPage = 1;
+
+    function renderTable() {
+      const visibleRows = Array.from(rows).filter(r => r.style.display !== "none" || !r.hasAttribute("data-hidden"));
+      let start = (currentPage - 1) * rowsPerPage;
+      let end = start + rowsPerPage;
+
+      visibleRows.forEach((row, i) => {
+        row.style.display = (i >= start && i < end) ? "" : "none";
+      });
+
+      renderPagination(visibleRows.length);
+    }
+
+    function renderPagination(totalRows) {
+      const totalPages = Math.ceil(totalRows / rowsPerPage);
+      const pagination = document.getElementById("pagination");
+      pagination.innerHTML = "";
+
+      for (let i = 1; i <= totalPages; i++) {
+        pagination.innerHTML += `
+          <li class="page-item ${i === currentPage ? "active" : ""}">
+            <a class="page-link" href="#">${i}</a>
+          </li>
+        `;
+      }
+
+      document.querySelectorAll("#pagination a").forEach((link, i) => {
+        link.addEventListener("click", e => {
+          e.preventDefault();
+          currentPage = i + 1;
+          renderTable();
+        });
+      });
+    }
+
+    // Search filter with pagination
+    document.getElementById("searchInput").addEventListener("keyup", function () {
+      const term = this.value.toLowerCase();
+      rows.forEach(row => {
+        if (row.innerText.toLowerCase().includes(term)) {
+          row.removeAttribute("data-hidden");
+          row.style.display = "";
+        } else {
+          row.setAttribute("data-hidden", "true");
+          row.style.display = "none";
+        }
+      });
+      currentPage = 1;
+      renderTable();
+    });
+
+    renderTable();
+  });
+</script>
+
+
+<% } else { %>
+  <div class="row justify-content-center mt-3">
+    <div class="col-lg-6 col-md-8">
+      <div class="card shadow-sm border-0 text-center p-4 fade-in">
+        <div class="card-body">
+          <i class="bi bi-envelope display-4 text-muted mb-3"></i>
+          <h5 class="card-title fw-bold">No Contacts Found</h5>
+        <p class="card-text text-muted">There are no contact messages to display at the moment.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% } %>
 <%- include('../partials/_footer') %>

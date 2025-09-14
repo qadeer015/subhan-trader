@@ -46,7 +46,6 @@ const sessionStore = new MySQLStore({
 
 app.set('trust proxy', 1); // very important on Vercel/Heroku/behind proxies
 
-console.log("NODE_ENV:", process.env.NODE_ENV);
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,

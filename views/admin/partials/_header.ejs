@@ -5,9 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="author" content="Subhan Traders">
-    <meta name="description" content="IBC Hardware Store Admin Panel">
-
-  <title><%= title %> | IBC Hardware Store</title>
+  <meta name="description" content="IBC Tank Store's Admin Panel">
+  <title><%= title %> | IBC Tank Store</title>
   <link rel="stylesheet" href="/css/styles.css">
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
@@ -67,27 +66,6 @@
       font-size: 1.5rem;
       color: white;
     }
-
-       /* Make dropdown open on hover */
-.dropdown:hover .dropdown-menu {
-  display: block;
-  margin-top: 0; /* prevent navbar height increase */
-}
-
-/* Ensure dropdown is absolutely positioned */
-.navbar .dropdown-menu {
-  position: absolute !important;
-  top: 100%;
-  left: auto;
-  right: 0; /* align to right */
-  z-index: 1050;
-}
-
-/* Prevent cutoff at small screens */
-.dropdown-menu {
-  max-width: 90vw;
-  word-wrap: break-word;
-}
   </style>
 </head>
 
@@ -106,7 +84,7 @@
       <ul class="navbar m-0">
         <li class="nav-item">
           <% if (user) { %>
-          <div class="dropdown">
+          <div class="user-profile dropdown">
             <button class="bg-transparent border-0 outline-0 d-flex align-items-center" type="button">
               <% if (user.profile_photo) { %>
               <img src="<%= user.profile_photo %>" alt="<%= user.name %>'s profile photo"
@@ -144,37 +122,37 @@
         <div class="d-flex justify-content-between align-items-center p-2">
           <span id="sidebarTitle" style="font-size: 1.5rem;" class="fw-bold">Menu</span>
           <!-- Collapse button (large screens) -->
-          <button class="sidebar-toggle d-none d-lg-inline" id="desktopSidebarToggle">
+          <button class="sidebar-toggle" id="desktopSidebarToggle">
             <i class="bi bi-layout-sidebar-inset"></i>
           </button>
         </div>
         <ul class="nav flex-column">
           <li class="nav-item mb-2">
-            <a class="nav-link text-dark <% if (title === 'Dashboard') { %>fw-bold<% } %>"
+            <a class="nav-link text-dark <% if (viewPage === 'dashboard') { %>fw-bold<% } %>"
               href="/admin/dashboard">
               <i class="bi bi-speedometer2"></i> <span class="ms-2">Dashboard</span>
             </a>
           </li>
           <li class="nav-item mb-2">
-            <a class="nav-link text-dark <% if (title === 'Products') { %>fw-bold<% } %>"
+            <a class="nav-link text-dark <% if (viewPage === 'products' || viewPage === 'products-show' || viewPage === 'products-new' || viewPage === 'products-edit') { %>fw-bold<% } %>"
               href="/admin/products">
               <i class="bi bi-box-seam"></i> <span class="ms-2">Products</span>
             </a>
           </li>
           <li class="nav-item mb-2">
-            <a class="nav-link text-dark <% if (title === 'Categories') { %>fw-bold<% } %>"
+            <a class="nav-link text-dark <% if (viewPage === 'categories') { %>fw-bold<% } %>"
               href="/admin/categories">
               <i class="bi bi-tags"></i> <span class="ms-2">Categories</span>
             </a>
           </li>
           <li class="nav-item mb-2">
-            <a class="nav-link text-dark <% if (title === 'Customers') { %>fw-bold<% } %>"
+            <a class="nav-link text-dark <% if (viewPage === 'customers') { %>fw-bold<% } %>"
               href="/admin/customers">
               <i class="bi bi-people"></i> <span class="ms-2">Customers</span>
             </a>
           </li>
           <li class="nav-item mb-2">
-            <a class="nav-link text-dark <% if (title === 'Contact Messages') { %>fw-bold<% } %>"
+            <a class="nav-link text-dark <% if (viewPage === 'contacts' || viewPage === 'contacts-show') { %>fw-bold<% } %>"
               href="/admin/contacts">
               <i class="bi bi-envelope"></i> <span class="ms-2">Contacts</span>
             </a>
