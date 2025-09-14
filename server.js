@@ -5,6 +5,8 @@ const path = require('path');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
+const MySQLStore = require('express-mysql-session')(session);
+const pool = require('./config/db'); // MySQL connection pool
 const Product = require('./models/Product');
 const Category = require('./models/Category');
 
@@ -28,19 +30,32 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Session configuration
+// server.js
+const sessionStore = new MySQLStore({
+  expiration: 86400000, // 1 day in milliseconds
+  createDatabaseTable: true, // Will create sessions table if it doesn't exist
+  schema: {
+    tableName: 'sessions',
+    columnNames: {
+      session_id: 'session_id',
+      expires: 'expires',
+      data: 'data'
+    }
+  }
+}, pool);
+
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'your-secret-key',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
-  cookie: { 
-    secure: process.env.NODE_ENV === 'production',  // true on production
+  store: sessionStore,
+  cookie: {
+    secure: process.env.NODE_ENV === 'production',
     httpOnly: true,
-    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // allow cross-site redirect
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
     maxAge: 24 * 60 * 60 * 1000
   }
 }));
-
 
 // Passport and flash middleware
 app.use(passport.initialize());
@@ -55,7 +70,6 @@ app.use((req, res, next) => {
     next();
 });
 
-// Enhanced Homepage with featured products, search and filters
 app.get('/', async (req, res) => {
     try {
         // Explicitly convert all numeric parameters
