@@ -55,7 +55,7 @@
                 <!-- Existing Image Preview -->
                 <div id="imagePreviewContainer" class="mb-3 position-relative <%= product.image ? '' : 'd-none' %>">
                     <% if(product.image) { %>
-                        <img id="imagePreview" src="<%= '/uploads/products/'+product.image %>" alt="Product preview" class="img-fluid rounded" style="max-height: 200px;">
+                        <img id="imagePreview" src="<%= product.image %>" alt="Product preview" class="img-fluid rounded" style="max-height: 200px;">
                     <% } else { %>
                         <img id="imagePreview" src="" alt="Product preview" class="img-fluid rounded" style="max-height: 200px;">
                     <% } %>

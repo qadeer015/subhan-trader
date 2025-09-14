@@ -5,7 +5,7 @@ const User = require("../models/User");
 const productController = require('../controllers/productsController');
 const contactController = require('../controllers/contactController');
 const categoryController = require('../controllers/categoryController');
-const upload = require("../middlewares/upload");
+const {upload} = require("../middlewares/upload");
 const router = express.Router();
 router.use(isAuthenticated);
 router.use(isAdmin);
@@ -15,7 +15,7 @@ router.get("/dashboard", async (req, res)=>{
             let totalProducts = await Product.count();
             let totalCustomers = await User.count('customer');
             let totalContacts = await contactController.getTotal();
-            res.render("admin/dashboard", {totalProducts, totalCustomers, totalContacts, title:'Dashboard'});
+            res.render("admin/dashboard", {totalProducts, totalCustomers, totalContacts, title:'Dashboard', viewPage: 'dashboard'});
       }catch(error){
           console.log(error);
       }
@@ -33,6 +33,7 @@ router.post("/products/:id/delete", productController.delete);
 
 // Contacts
 router.get('/contacts', contactController.list);
+router.get('/contacts/:id', contactController.show);
 router.post('/contacts/:id/delete', contactController.delete);
 
 // Categories
@@ -44,7 +45,7 @@ router.post('/categories/:id/delete', categoryController.delete);
 router.get('/customers', async (req, res)=>{
       try{
             let customers = await User.getAll('customer');
-            res.render("admin/customer/index", {customers, title:'Customers'});
+            res.render("admin/customer/index", {customers, viewPage: 'customers', title:'Customers'});
       }catch(error){
           console.log(error);
       }

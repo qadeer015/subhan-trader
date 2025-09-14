@@ -13,11 +13,13 @@ const productController = {
                 rating: parseFloat(product.rating).toFixed(1),
                 price: parseFloat(product.price).toFixed(2)
             }));
+
             if (req.user && req.user.role === 'admin') {
                 return res.render('admin/products/index', {
                     title: 'Products',
                     products,
                     categories,
+                    viewPage: 'products', 
                     success: req.flash('success'),
                     error: req.flash('error')
                 });
@@ -41,6 +43,7 @@ const productController = {
         const categories = await Category.getAll();
         res.render('admin/products/new', {
             title: 'Add New Product',
+            viewPage: 'products-new',
             categories
         });
     },
@@ -48,7 +51,7 @@ const productController = {
     async create(req, res) {
         try {
             const { name, description, price, category_id, condition, stock } = req.body;
-            const image = req.file ? req.file.filename : null;
+            const image =  req.file ? req.file.path : null;
 
             if (!image) {
                 throw new Error('Product image is required');
@@ -88,6 +91,7 @@ const productController = {
             if (req.user && req.user.role === 'admin') {
                 res.render('admin/products/show', {
                     title: product.name,
+                    viewPage: 'products-show',
                     product
                 });
             } else {
@@ -114,6 +118,7 @@ const productController = {
             res.render('admin/products/edit', {
                 title: `Edit ${product.name}`,
                 product,
+                viewPage: 'products-edit',
                 categories
             });
         } catch (error) {
@@ -126,11 +131,28 @@ const productController = {
         try {
             const { id } = req.params;
             const { name, description, price, category_id, condition, stock, existingImage } = req.body;
-            const image = req.file ? req.file.filename : existingImage;
-            if (!image) {
-                throw new Error('Product image is required');
+            const product = await Product.getById(id);
+            if (!product) {
+                req.flash('error', 'Product not found');
+                return res.redirect('/products');
             }
-            await Product.updateProduct(id, name, description, price, image, category_id, condition, stock);
+            // If a new image is uploaded, use it; otherwise, keep the existing image
+            let productImage = existingImage;
+             if (req.file) {
+                // Delete old avatar if it exists and is from Cloudinary
+                if (product.image && product.image.includes('res.cloudinary.com')) {
+                    try {
+                        const publicId = product.image.split('/').slice(-2).join('/').split('.')[0];
+                        if(publicId){
+                            await cloudinary.uploader.destroy(publicId);
+                        }
+                    } catch (err) {
+                        console.error('Error deleting old avatar:', err);
+                    }
+                }
+                productImage = req.file.path;
+            }
+            await Product.updateProduct(id, name, description, price, productImage, category_id, condition, stock);
             req.flash('success', 'Product updated successfully');
             res.redirect(`/admin/products/${id}`);
         } catch (error) {
@@ -142,6 +164,20 @@ const productController = {
     async delete(req, res) {
         try {
             const { id } = req.params;
+
+            // Delete the product image if it exists and is from Cloudinary
+            const product = await Product.getById(id);
+            if (product && product.image && product.image.includes('res.cloudinary.com')) {
+                try {
+                    const publicId = product.image.split('/').slice(-2).join('/').split('.')[0];
+                    if(publicId){
+                        await cloudinary.uploader.destroy(publicId);
+                    }
+                } catch (err) {
+                    console.error('Error deleting product image:', err);
+                }
+            }
+
             const deleted = await Product.delete(id);
 
             if (deleted) {

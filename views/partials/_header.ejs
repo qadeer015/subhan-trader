@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Subhan Traders">
+    <meta name="description" content="IBC Tank Store's Public Site">
     <title><%= title %> | IBC Tank Store</title>
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -17,12 +21,38 @@
                     <li class="nav-item"><a class="nav-link" href="/products">Products</a></li>
                     <li class="nav-item">
                         <% if (user) { %>
-                            <img src="<%= user.profile_photo %>" alt="<%= user.name %>'s profile photo" class="rounded-circle" width="40" height="40">
-                        <% } else { %>
-                            <a class="nav-link text-white" href="/auth/signin">
-                                Signin
-                            </a>
-                        <% } %>
+                            <div class="user-profile dropdown">
+                              <button class="bg-transparent border-0 outline-0 d-flex align-items-center" type="button">
+                                <% if (user.profile_photo) { %>
+                                <img src="<%= user.profile_photo %>" alt="<%= user.name %>'s profile photo"
+                                  class="rounded-circle" width="40" height="40">
+                                <% } else { %>
+                                <span class="rounded-circle bg-secondary text-white d-inline-flex align-items-center justify-content-center"
+                                  style="width:40px; height:40px;">
+                                  <%= user.name.charAt(0).toUpperCase() %>
+                                </span>
+                                <% } %>
+                              </button>
+                              <ul class="dropdown-menu dropdown-menu-end shadow">
+                                <li>
+                                  <div class="dropdown-item fw-semibold"><%= user.name %></div>
+                                </li>
+                                <%if(user.role === 'admin'){ %>
+                                <li>
+                                    <a href="/admin/dashboard" class="dropdown-item">Dashboard</a>
+                                </li>
+                                <%}%>
+                                <li>
+                                  <form action="/auth/logout" method="POST">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="dropdown-item">Sign out</button>
+                                  </form>
+                                </li>
+                              </ul>
+                            </div>
+                            <% } else { %>
+                            <a class="nav-link text-white" href="/auth/signin">Signin</a>
+                            <% } %>
                     </li>
                 </ul>
             </div>

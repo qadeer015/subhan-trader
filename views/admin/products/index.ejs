@@ -1,60 +1,173 @@
 <%- include('../partials/_header') %>
 
-<h2 class="mb-4">Products</h2>
-
-<form class="row g-3 mb-4" method="get">
-    <div class="col-md-4">
-        <input type="text" name="search" class="form-control" placeholder="Search products...">
+<div class="row">
+    <div class="col-6">
+        <h1 class="m-0">Products</h1>
     </div>
-    <div class="col-md-3">
-        <select name="category" class="form-select">
-            <option value="">All Categories</option>
-            <% categories.forEach(c => { %>
-                <option value="<%= c.id %>"><%= c.name %></option>
-            <% }) %>
-        </select>
+    <div class="col-6 my-auto text-end">
+        <a href="/admin/products/new" class="btn btn-primary">
+            <i class="bi bi-plus-lg me-1"></i> Add New Product
+        </a>
     </div>
-    <div class="col-md-3">
-        <select name="sort" class="form-select">
-            <option value="newest">Newest</option>
-            <option value="price_asc">Price: Low to High</option>
-            <option value="price_desc">Price: High to Low</option>
-        </select>
-    </div>
-    <div class="col-md-2">
-        <button type="submit" class="btn btn-primary w-100">Apply</button>
-    </div>
-</form>
-
-<div class="row row-cols-1 row-cols-md-3 g-4">
-    <% products.forEach(product => { %>
-        <div class="col">
-            <div class="card product-card h-100">
-                <a class="text-decoration-none text-dark" href="/products/<%= product.id %>">
-                    <img src="/uploads/products/<%= product.image %>" class="card-img-top product-img" alt="<%= product.name %>">
-                </a>
-                <div class="card-body">
-                    <a class="text-decoration-none text-dark" href="/products/<%= product.id %>">
-                        <h5 class="card-title"><%= product.name %></h5>
-                    </a>
-                    <div class="rating mb-2">
-                        <% for(let i=1; i<=5; i++) { %>
-                            <% if(i <= Math.floor(product.rating)) { %>
-                                <i class="bi bi-star-fill text-warning"></i>
-                            <% } else if(i === Math.ceil(product.rating) && product.rating % 1 > 0) { %>
-                                <i class="bi bi-star-half text-warning"></i>
-                            <% } else { %>
-                                <i class="bi bi-star text-warning"></i>
-                            <% } %>
-                        <% } %>
-                    </div>
-                    <a class="text-decoration-none text-dark" href="/products/<%= product.id %>">
-                        <p class="card-text">Rs.<%= product.price %></p>
-                    </a>
-                </div>
-            </div>
-        </div>
-    <% }) %>
 </div>
+
+<% if(products.length > 0) {%>
+
+<div class="row">
+  <div class="col-12 my-3 d-flex justify-content-between align-items-center">
+    <!-- Search -->
+    <input type="text" id="searchInput" class="form-control w-25" placeholder="Search products...">
+    <!-- Pagination controls -->
+    <nav>
+      <ul class="pagination mb-0" id="pagination"></ul>
+    </nav>
+  </div>
+
+  <div class="col-12">
+    <div class="table-responsive">
+      <table class="table table-hover align-middle" id="productsTable">
+        <thead class="table-light">
+          <tr class="text-center">
+            <th>Image</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Stock</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Condition</th>
+            <th>Rating</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody class="text-start" id="productsBody">
+          <% products.forEach(product => { %>
+          <tr>
+            <td>
+              <img src="<%= product.image %>" alt="<%= product.name %>"
+                   style="width: 50px; height: 50px; object-fit: cover;" class="rounded">
+            </td>
+            <td><%= product.name %></td>
+            <td>
+              <span class="d-inline-block text-truncate" style="max-width: 200px;"
+                    title="<%= product.description %>">
+                <%= product.description %>
+              </span>
+            </td>
+            <td class="text-center">
+              <% if (product.stock > 0) { %>
+                <span class="badge bg-success"><%= product.stock %></span>
+              <% } else { %>
+                <span class="badge bg-danger">Out of stock</span>
+              <% } %>
+            </td>
+            <td class="text-end">Rs.<%= product.price.toLocaleString() %></td>
+            <td><%= product.category_name ? product.category_name : 'Uncategorized' %></td>
+            <td><%= product.condition %></td>
+            <td class="text-center">
+              <%= product.rating %>
+            </td>
+            <td class="text-center">
+              <div class="dropdown">
+                <button class="btn btn-sm btn-outline-primary rounded-circle"
+                        type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-three-dots"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li>
+                    <a class="dropdown-item" href="/admin/products/<%= product.id %>/edit">
+                      <i class="bi bi-pencil me-2 text-primary"></i>Edit
+                    </a>
+                  </li>
+                  <li>
+                    <form action="/admin/products/<%= product.id %>/delete" method="POST"
+                          onsubmit="return confirm('Are you sure you want to delete this product?');">
+                      <button type="submit" class="dropdown-item text-danger">
+                        <i class="bi bi-trash me-2"></i>Delete
+                      </button>
+                    </form>
+                  </li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- JS for Search + Pagination -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const rows = document.querySelectorAll("#productsBody tr");
+    const rowsPerPage = 5; // Change this for more/less per page
+    let currentPage = 1;
+
+    function renderTable() {
+      let start = (currentPage - 1) * rowsPerPage;
+      let end = start + rowsPerPage;
+
+      rows.forEach((row, i) => {
+        row.style.display = (i >= start && i < end) ? "" : "none";
+      });
+
+      renderPagination();
+    }
+
+    function renderPagination() {
+      const totalPages = Math.ceil(rows.length / rowsPerPage);
+      const pagination = document.getElementById("pagination");
+      pagination.innerHTML = "";
+
+      for (let i = 1; i <= totalPages; i++) {
+        pagination.innerHTML += `
+          <li class="page-item ${i === currentPage ? "active" : ""}">
+            <a class="page-link" href="#">${i}</a>
+          </li>
+        `;
+      }
+
+      document.querySelectorAll("#pagination a").forEach((link, i) => {
+        link.addEventListener("click", e => {
+          e.preventDefault();
+          currentPage = i + 1;
+          renderTable();
+        });
+      });
+    }
+
+    // Search filter
+    document.getElementById("searchInput").addEventListener("keyup", function () {
+      const term = this.value.toLowerCase();
+      rows.forEach(row => {
+        row.style.display = row.innerText.toLowerCase().includes(term) ? "" : "none";
+      });
+    });
+
+    renderTable();
+  });
+</script>
+<% } else { %>
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8">
+      <div class="card shadow-sm border-0 text-center p-4 fade-in">
+        <div class="card-body">
+          <i class="bi bi-box-seam display-4 text-muted mb-3"></i>
+          <h5 class="card-title fw-bold">No Products Found</h5>
+          <p class="card-text text-muted">
+            It looks like you haven’t added any products yet.
+          </p>
+          <a href="/admin/products/new" class="btn btn-primary">
+            <i class="bi bi-plus-lg me-1"></i> Add New Product
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+<% } %>
+
+
+
 
 <%- include('../partials/_footer') %>
