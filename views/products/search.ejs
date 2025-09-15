@@ -83,7 +83,7 @@
                             <div class="card h-100">
                                 <a href="/products/<%= product.id %>" class="text-decoration-none">
                                 <% if (product.image) { %>
-                                    <img src="/uploads/products/<%= product.image %>" class="card-img-top product-img" alt="<%= product.name %>">
+                                    <img src="<%= product.image %>" class="card-img-top product-img" alt="<%= product.name %>">
                                 <% } else { %>
                                     <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
                                         <span class="text-muted">No image</span>
