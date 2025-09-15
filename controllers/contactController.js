@@ -25,6 +25,9 @@ const contactController = {
     async show(req, res) {
         const { id } = req.params;
         const contact = await Contact.getById(id);
+        if (contact) {
+            contact.created_at = formateDate(contact.created_at);
+        }
         res.render('admin/contact/show', { title: 'Contact Message', contact,  viewPage: 'contacts-show'  });
     },
 
