@@ -1,25 +1,40 @@
 <h2>Location</h2>
 
 <div id="map" style="height: 300px; width: 100%;"></div>
-<p class="mt-3 fw-bold">
-    <i class="bi bi-geo-alt"></i>
-    Lahore, Pakistan.
+
+<p id="address" class="mt-3 fw-bold">
+    <i class="bi bi-geo-alt"></i> Getting address…
 </p>
+
 <script>
   function initMap() {
-    const location = { lat: 31.5204, lng: 74.3587 }; // Example: Lahore, Pakistan
+    const location = { lat: 31.5204, lng: 74.3587 };
+
     const map = new google.maps.Map(document.getElementById("map"), {
       zoom: 14,
       center: location,
     });
+
     const marker = new google.maps.Marker({
       position: location,
       map: map,
     });
+
+    // ==== REVERSE GEOCODING (Lat/Lng → Address) ====
+    const geocoder = new google.maps.Geocoder();
+
+    geocoder.geocode({ location: location }, function(results, status) {
+      if (status === "OK" && results[0]) {
+        document.getElementById("address").innerHTML =
+          `<i class="bi bi-geo-alt"></i> ${results[0].formatted_address}`;
+      } else {
+        document.getElementById("address").innerHTML =
+          `<i class="bi bi-geo-alt"></i> Lahore, Pakistan`;
+      }
+    });
   }
 </script>
 
-<!-- Replace `YOUR_API_KEY` with your actual API key -->
 <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALsT11N46VIAkllaf-cKEiPm58gHCAXZY&callback=initMap">
 </script>

@@ -1,16 +1,20 @@
 <h2>Contact Us</h2>
 <form id="contact-us-form" class="row g-3">
     <div class="col-md-6">
-        <label for="name" class="form-label">Name</label>
+        <label for="name" class="form-label">*Name</label>
         <input type="text" name="name" class="form-control" placeholder="Your Name" required>
     </div>
     <div class="col-md-6">
-        <label for="email" class="form-label">Email</label>
+        <label for="email" class="form-label">*Email</label>
         <input type="email" name="email" class="form-control" placeholder="Your Email" required>
     </div>
     <div class="col-12">
-        <label for="message" class="form-label">Message</label>
+        <label for="message" class="form-label">*Message</label>
         <textarea name="message" rows="3" class="form-control" placeholder="Your Message" required></textarea>
+    </div>
+      <div class="col-12">
+        <label for="contact_no" class="form-label">*Contact Number</label>
+        <input type="tel" name="contact_no" class="form-control" placeholder="Your Contact Number" required>
     </div>
     <div class="col-12">
         <button type="submit" class="btn btn-primary">Submit Message</button>
