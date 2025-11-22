@@ -1,3 +1,4 @@
+// controllers/contactController.js
 const Contact = require('../models/Contact');
 
 const contactController = {
@@ -6,8 +7,8 @@ const contactController = {
     },
 
     async submit(req, res) {
-        const { name, email, message } = req.body;
-        await Contact.create(name, email, message);
+        const { name, email, message, contact_no } = req.body;
+        await Contact.create(name, email, message, contact_no);
         req.flash('success', 'Your query submitted successfully.');
         res.json({ success: true });
     },

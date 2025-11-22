@@ -1,10 +1,11 @@
+// models/Contact.js
 const db = require("../config/db");
 
 class Contact {
-    static async create(name, email, message) {
+    static async create(name, email, message, contact_no) {
         const [insertResult] = await db.execute(
-            'INSERT INTO contacts (name, email, message) VALUES (?, ?, ?)',
-            [name, email, message]
+            'INSERT INTO contacts (name, email, message, contact_no) VALUES (?, ?, ?, ?)',
+            [name, email, message, contact_no]
         );
 
         const [rows] = await db.execute(
