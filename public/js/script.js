@@ -1,3 +1,4 @@
+// public/js/script.js
 document.addEventListener('DOMContentLoaded', () => {
     //const contactLink = document.getElementById('contact-link');
     const popupContact = document.getElementById('contact-popup');

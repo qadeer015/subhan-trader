@@ -1,3 +1,4 @@
+// models/Product.js
 const db = require("../config/db");
 
 class Product {
