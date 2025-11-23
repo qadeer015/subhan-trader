@@ -1,7 +1,8 @@
-                </main>
-            </div>
-        </div>
-    </div>
+<!-- views/admin/partials/_footer.ejs -->
+</main>
+</div>
+</div>
+</div>
 </div>
 
 <footer class="bg-dark text-white py-2 mt-auto">
@@ -11,7 +12,7 @@
 </footer>
 
 
-  <script>
+<script>
     const sidebar = document.getElementById("sidebar");
     const linkElements = sidebar?.querySelectorAll(".nav-link");
     const mobileSidebarToggle = document.getElementById("mobileSidebarToggle");
@@ -26,12 +27,12 @@
     // Desktop toggle
     desktopSidebarToggle?.addEventListener("click", () => {
         sidebar.classList.toggle("shrink");
-            linkElements.forEach(link => {
-                link.classList.toggle("text-center");
-            });
+        linkElements.forEach(link => {
+            link.classList.toggle("text-center");
+        });
         sidebarTitle.classList.toggle("d-none");
     });
-  </script>
+</script>
 
 
 <script src="/js/notification.js"></script>
@@ -39,4 +40,5 @@
 <!-- Swiper JS -->
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </body>
+
 </html>

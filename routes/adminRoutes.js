@@ -1,3 +1,4 @@
+// routes/adminRoutes.js
 const express = require("express");
 const { isAuthenticated,isAdmin} = require("../middlewares/authenticate");
 const Product = require("../models/Product");

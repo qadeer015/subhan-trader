@@ -1,4 +1,4 @@
-// === routes/authRoutes.js ===
+// routes/authRoutes.js
 const express = require('express');
 const passport = require('passport');
 const authController = require('../controllers/authController');
