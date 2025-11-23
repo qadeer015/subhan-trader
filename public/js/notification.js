@@ -1,3 +1,4 @@
+// public/js/notification.js
 function showAlert(message, type="success"){
   const alertContainer = document.createElement("div");
   alertContainer.classList.add("alertContainer","position-fixed");

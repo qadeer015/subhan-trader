@@ -1,3 +1,4 @@
+// models/User.js
 const db = require('../config/db');
 class User {
   static async findByEmail(email) {
