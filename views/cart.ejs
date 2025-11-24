@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your Cart</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<%- include('partials/header') %>
+
+<h1>Your Cart</h1>
+
+<% if (!cartItems || cartItems.length === 0) { %>
+  <p>Your cart is empty. <a href="/products">Shop now</a></p>
+<% } else { %>
+  <table>
+    <thead>
+      <tr><th>Product</th><th>Price</th><th>Quantity</th><th>Total</th><th>Action</th></tr>
+    </thead>
+    <tbody>
+      <% cartItems.forEach(ci => { %>
+        <tr>
+          <td><a href="/products/<%= ci.product._id %>"><%= ci.product.name %></a></td>
+          <td>$<%= ci.product.price.toFixed(2) %></td>
+          <td>
+            <form action="/cart/<%= ci._id %>?_method=PUT" method="POST">
+              <input type="number" name="quantity" value="<%= ci.quantity %>" min="1" max="<%= ci.product.stock %>">
+              <button type="submit">Update</button>
+            </form>
+          </td>
+          <td>$<%= (ci.product.price * ci.quantity).toFixed(2) %></td>
+          <td>
+            <form action="/cart/<%= ci._id %>?_method=DELETE" method="POST">
+              <button type="submit">Remove</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+  <div class="summary">
+    <p>Subtotal: $<%= totals.subtotal.toFixed(2) %></p>
+    <p>Delivery: $<%= totals.deliveryCharges.toFixed(2) %></p>
+    <p>Discount: $<%= totals.discount.toFixed(2) %></p>
+    <p><strong>Total: $<%= totals.total.toFixed(2) %></strong></p>
+    <a href="/checkout">Proceed to checkout</a>
+  </div>
+<% } %>
+
+</body>
+</html>

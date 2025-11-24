@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Checkout</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<%- include('partials/header') %>
+
+<h1>Checkout</h1>
+
+<h2>Order Summary</h2>
+<ul>
+  <% cartItems.forEach(ci => { %>
+    <li><%= ci.quantity %> x <%= ci.product.name %> - $<%= (ci.product.price * ci.quantity).toFixed(2) %></li>
+  <% }) %>
+</ul>
+<p>Subtotal: $<%= totals.subtotal.toFixed(2) %></p>
+<p>Delivery: $<%= totals.deliveryCharges.toFixed(2) %></p>
+<p>Discount: $<%= totals.discount.toFixed(2) %></p>
+<p>Total: $<%= totals.total.toFixed(2) %></p>
+
+<h2>Billing & Shipping</h2>
+<form action="/checkout" method="POST">
+  <label>Full name: <input type="text" name="fullName" required></label><br>
+  <label>Address Line 1: <input type="text" name="addressLine1" required></label><br>
+  <label>Address Line 2: <input type="text" name="addressLine2"></label><br>
+  <label>City: <input type="text" name="city" required></label><br>
+  <label>State: <input type="text" name="state"></label><br>
+  <label>Postal Code: <input type="text" name="postalCode"></label><br>
+  <label>Country: <input type="text" name="country"></label><br>
+  <label>Phone: <input type="text" name="phone"></label><br>
+
+  <!-- Optional delivery/disocunt inputs for demo -->
+  <input type="hidden" name="deliveryCharges" value="<%= totals.deliveryCharges %>">
+  <input type="hidden" name="discount" value="<%= totals.discount %>">
+
+  <button type="submit">Place Order and Pay</button>
+</form>
+
+</body>
+</html>
