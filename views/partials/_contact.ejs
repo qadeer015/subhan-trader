@@ -3,19 +3,19 @@
 <form id="contact-us-form" class="row g-3">
     <div class="col-md-6">
         <label for="name" class="form-label">*Name</label>
-        <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+        <input type="text" id="name" class="form-control" placeholder="Your Name" required autocomplete="additional-name">
     </div>
     <div class="col-md-6">
         <label for="email" class="form-label">*Email</label>
-        <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+        <input type="email" id="email" class="form-control" placeholder="Your Email" required autocomplete="email">
     </div>
     <div class="col-12">
         <label for="message" class="form-label">*Message</label>
-        <textarea name="message" rows="3" class="form-control" placeholder="Your Message" required></textarea>
+        <textarea id="message" name="message" rows="3" class="form-control" placeholder="Your Message" required></textarea>
     </div>
       <div class="col-12">
         <label for="contact_no" class="form-label">*Contact Number</label>
-        <input type="tel" name="contact_no" class="form-control" placeholder="Your Contact Number" required>
+        <input type="tel" id="contact_no" name="contact_no" class="form-control" placeholder="Your Contact Number" required>
     </div>
     <div class="col-12">
         <button type="submit" class="btn btn-primary">Submit Message</button>

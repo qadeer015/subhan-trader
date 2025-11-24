@@ -1,0 +1,25 @@
+```ejs
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= product.name %></title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<%- include('partials/header') %>
+
+<h1><%= product.name %></h1>
+<p>Price: $<%= product.price.toFixed(2) %></p>
+<p>Category: <%= product.category %></p>
+<p>Stock: <%= product.stock %></p>
+<p><%= product.description %></p>
+
+<form action="/cart/add" method="POST">
+  <input type="hidden" name="productId" value="<%= product._id %>">
+  <label>Quantity: <input type="number" name="quantity" value="1" min="1" max="<%= product.stock %>"></label>
+  <button type="submit">Add to cart</button>
+</form>
+
+<a href="/products">Back to products</a>
+</body>
+</html>
