@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order Failed</title>
+</head>
+<body>
+<%- include('partials/header') %>
+<h1>Payment Failed</h1>
+
+<p>Order ID: <%= order._id %></p>
+<p>Status: <%= order.orderStatus %></p>
+
+<p>You can try again from your cart.</p>
+<a href="/cart">Back to cart</a>
+</body>
+</html>

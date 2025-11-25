@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mock Payment</title>
+</head>
+<body>
+  <h1>Mock Payment for Order <%= order._id %></h1>
+  <p>Amount: $<%= order.totalAmount.toFixed(2) %></p>
+
+  <form action="/payment/mock-result" method="POST">
+    <input type="hidden" name="orderId" value="<%= order._id %>">
+    <button name="result" value="success" type="submit">Simulate Success</button>
+    <button name="result" value="fail" type="submit">Simulate Failure</button>
+  </form>
+</body>
+</html>
