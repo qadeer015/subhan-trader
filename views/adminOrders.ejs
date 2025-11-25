@@ -1,0 +1,40 @@
+```ejs
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Orders</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<%- include('partials/header') %>
+<h1>All Orders</h1>
+
+<table>
+  <thead><tr><th>ID</th><th>Total</th><th>Status</th><th>Payment</th><th>Created</th><th>Actions</th></tr></thead>
+  <tbody>
+    <% orders.forEach(o => { %>
+      <tr>
+        <td><%= o._id %></td>
+        <td>$<%= o.totalAmount.toFixed(2) %></td>
+        <td><%= o.orderStatus %></td>
+        <td><%= o.paymentStatus %></td>
+        <td><%= new Date(o.createdAt).toLocaleString() %></td>
+        <td>
+          <form action="/admin/orders/<%= o._id %>/status" method="POST">
+            <select name="status">
+              <option value="pending" <%= o.orderStatus==='pending'?'selected':'' %>>pending</option>
+              <option value="paid" <%= o.orderStatus==='paid'?'selected':'' %>>paid</option>
+              <option value="packed" <%= o.orderStatus==='packed'?'selected':'' %>>packed</option>
+              <option value="shipped" <%= o.orderStatus==='shipped'?'selected':'' %>>shipped</option>
+              <option value="delivered" <%= o.orderStatus==='delivered'?'selected':'' %>>delivered</option>
+              <option value="cancelled" <%= o.orderStatus==='cancelled'?'selected':'' %>>cancelled</option>
+            </select>
+            <button type="submit">Update</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+</body>
+</html>

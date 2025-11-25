@@ -1,23 +1,30 @@
 {
-  "name": "subhan-trader",
+  "name": "ibc-tank-store",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "description": "Ecommerce system (Node.js, Express, MongoDB, EJS)",
+  "main": "app.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AbdulQadeeeer/subhan-trader.git"
+    "url": "git+https://github.com/qadeer015/ibc-tank-store.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Abdul Qadeer , Zaheer Ahmad , Kafil Anwer",
+  "license": "ISC , MIT",
   "bugs": {
-    "url": "https://github.com/AbdulQadeeeer/subhan-trader/issues"
+    "url": "https://github.com/qadeer015/ibc-tank-store/issues"
   },
-  "homepage": "https://github.com/AbdulQadeeeer/subhan-trader#readme",
+  "homepage": "https://github.com/qadeer015/ibc-tank-store#readme",
   "dependencies": {
+    "connect-mongo": "^4.6.0",
+    "mongoose": "^7.0.0",
+    "morgan": "^1.10.0",
+    "method-override": "^3.0.0",
+    "bcryptjs": "^2.4.3",
+    "uuid": "^9.0.0",
     "body-parser": "^2.2.0",
     "cloudinary": "^1.41.3",
     "connect-flash": "^0.1.1",
@@ -31,5 +38,7 @@
     "mysql2": "^3.14.3",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0"
+  },  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }
