@@ -2,10 +2,10 @@
   "name": "ibc-tank-store",
   "version": "1.0.0",
   "description": "Ecommerce system (Node.js, Express, MongoDB, EJS)",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
