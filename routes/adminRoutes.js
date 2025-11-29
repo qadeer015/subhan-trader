@@ -6,6 +6,7 @@ const User = require("../models/User");
 const productController = require('../controllers/productsController');
 const contactController = require('../controllers/contactController');
 const categoryController = require('../controllers/categoryController');
+const settingsController = require('../controllers/settingsController');
 const {upload} = require("../middlewares/upload");
 const router = express.Router();
 router.use(isAuthenticated);
@@ -41,6 +42,9 @@ router.post('/contacts/:id/delete', contactController.delete);
 router.get('/categories', categoryController.list);
 router.post('/categories/create', categoryController.create);
 router.post('/categories/:id/delete', categoryController.delete);
+
+router.get('/settings', settingsController.getSettingsPage);
+router.post('/settings', settingsController.saveSettings);
 
 // Customers
 router.get('/customers', async (req, res)=>{

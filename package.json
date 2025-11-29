@@ -19,27 +19,30 @@
   },
   "homepage": "https://github.com/qadeer015/ibc-tank-store#readme",
   "dependencies": {
-    "connect-mongo": "^4.6.0",
-    "mongoose": "^7.0.0",
-    "morgan": "^1.10.0",
-    "method-override": "^3.0.0",
+    "axios": "^1.13.2",
     "bcryptjs": "^2.4.3",
-    "uuid": "^9.0.0",
     "body-parser": "^2.2.0",
     "cloudinary": "^1.41.3",
     "connect-flash": "^0.1.1",
+    "connect-mongo": "^4.6.0",
     "dotenv": "^17.2.1",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "express-mysql-session": "^3.0.3",
     "express-session": "^1.18.2",
+    "method-override": "^3.0.0",
+    "mongoose": "^7.0.0",
+    "morgan": "^1.10.0",
     "multer": "^2.0.2",
     "multer-storage-cloudinary": "^4.0.0",
     "mysql2": "^3.14.3",
     "nodemailer": "^7.0.11",
+    "normalize-path": "^3.0.0",
     "passport": "^0.7.0",
-    "passport-google-oauth20": "^2.0.0"
-  },  "devDependencies": {
+    "passport-google-oauth20": "^2.0.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.22"
   }
 }
