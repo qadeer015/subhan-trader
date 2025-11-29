@@ -33,7 +33,7 @@ document.getElementById('contact-us-form').addEventListener('submit', async (e) 
     submitButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
     
     try {
-        const response = await fetch('/contact/submit', {
+        const response = await fetch('', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
