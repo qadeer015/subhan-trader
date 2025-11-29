@@ -1,7 +1,9 @@
 // controllers/contactController.js
 const Contact = require('../models/Contact');
-const {sendEmail} = require("../api/emailService");
+const { sendEmail } = require("../api/emailService");
 const renderTemplate = require("../utils/templateRenderer");
+const sendDiscordMessage = require('../utils/discordNotifier');
+const Setting = require('../models/Setting');
 
 const contactController = {
     async showForm(req, res) {
@@ -10,32 +12,53 @@ const contactController = {
 
     async submit(req, res) {
         const { name, email, message, contact_no } = req.body;
-        await Contact.create(name, email, message, contact_no);
-        const html = renderTemplate("contact_message.html", {
-          name,
-          email,
-          message,
-          year: new Date().getFullYear()
+        const messageData = await Contact.create(name, email, message, contact_no);
+        
+        const settingsArr = await Setting.all();
+
+        // Convert array → object
+        const settings = {};
+        settingsArr.forEach((s) => {
+            try {
+                settings[s.key] = JSON.parse(s.value);
+            } catch {
+                settings[s.key] = s.value;
+            }
         });
-    
-        // Send email to admin
-        sendEmail({
-          to: "ibctank.team@gmail.com",   // Change to your admin inbox
-          subject: "New Contact Form Message",
-          text: `Message from ${name}`,
-          html
-        });
+
+        if (settings.notify_contact_submission) {
+
+            if (settings.notification_method === 'email') {
+
+                const html = renderTemplate("contact_message.html", {
+                    name,
+                    email,
+                    contact_no,
+                    message,
+                    year: new Date().getFullYear()
+                });
+
+                sendEmail({
+                    to: "ibctank.team@gmail.com",
+                    subject: "New Contact Form Message",
+                    text: `Message from ${name}`,
+                    html
+                });
+
+            } else if (settings.notification_method === 'discord') {
+                sendDiscordMessage('notification_endpoint', messageData);
+            }
+        }
         req.flash('success', 'Your query submitted successfully.');
         res.json({ success: true });
     },
-
 
     async list(req, res) {
         const contacts = await Contact.getAll();
         res.render('admin/contact/index', { title: 'Contacts', contacts, viewPage: 'contacts' });
     },
 
-    async getTotal(){
+    async getTotal() {
         return await Contact.count();
     },
 
@@ -45,7 +68,7 @@ const contactController = {
         if (contact) {
             contact.created_at = formateDate(contact.created_at);
         }
-        res.render('admin/contact/show', { title: 'Contact Message', contact,  viewPage: 'contacts-show'  });
+        res.render('admin/contact/show', { title: 'Contact Message', contact, viewPage: 'contacts-show' });
     },
 
     async delete(req, res) {

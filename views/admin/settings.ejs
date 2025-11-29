@@ -1,0 +1,57 @@
+<!--  views/admin/settings.ejs -->
+<%- include('partials/_header') %>
+<div class="row">
+  <div class="col-12 grid-margin">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Settings</h4>
+        <div class="template-demo">
+          <form action="/admin/settings" method="POST" class="needs-validation" novalidate >
+            <div class="card mb-4">
+              <div class="card-header bg-warning">
+                <h5 class="mb-0">Mailer / Notification Settings</h5>
+              </div>
+              <div class="card-body">
+                <div class="form-check form-switch mb-3">
+                  <input class="form-check-input" type="checkbox" id="notify_contact_submission" name="notify_contact_submission" <%= settings.notify_contact_submission ? 'checked' : '' %>>
+                  <label class="form-check-label" for="notify_contact_submission">Notify When New “Contact Us” Submission Arrives</label>
+                </div>
+        
+                <div class="mb-3">
+                  <label for="notification_method" class="form-label">Notification Method</label>
+                  <select id="notification_method" name="notification_method" class="form-select mb-2">
+                    <option value="email" <%= settings.notification_method === 'email' ? 'selected' : '' %>>Email</option>
+                    <option value="discord" <%= settings.notification_method === 'discord' ? 'selected' : '' %>>Discord</option>
+                  </select>
+                  <div class="alert alert-danger">
+                    <p>
+                      <small>
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <b>NOTE:</b> Notification settings are currently set to <code><%= settings.notification_method %></code>.
+                        <ul>
+                            <li>Email: <code><%= settings.notification_email || 'ibctank.team@gmail.com' %></code></li>
+                            <li>Discord: <code><%= settings.notification_endpoint || 'Not Set' %></code></li>
+                        </ul>
+                      </small>
+                    </p>
+                  </div>
+                </div>
+        
+                <div class="mb-3">
+                  <label for="notification_endpoint" class="form-label">Webhook</label>
+                  <input type="text" class="form-control" id="notification_endpoint" name="notification_endpoint" placeholder="Discord Webhook URL or Admin Email" value="<%= settings.notification_endpoint || '' %>">
+                </div>
+              </div>
+            </div>
+
+            <div class="text-end">
+              <button type="submit" class="btn btn-lg btn-primary">Save Settings</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/_footer') %>
