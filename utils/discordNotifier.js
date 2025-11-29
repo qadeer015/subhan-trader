@@ -10,7 +10,7 @@ async function sendDiscordMessage(type, messageData) {
       key = 'notification_endpoint';
       embed = {
         title: "New Contact Message Received",
-        description: `**Name**: ${messageData.name}\n**Email**: ${messageData.email}\n**Message**: ${messageData.message}\n**Contact Number**: ${messageData.contact_no}\n\n <a href="https://ibctank.store/admin/contacts/${messageData.id}">View Message</a>`,
+        description: `**Name**: ${messageData.name}\n**Email**: ${messageData.email}\n**Message**: ${messageData.message}\n**Contact Number**: ${messageData.contact_no}\n\n <a href='https://ibctank.store/admin/contacts/${messageData.id}'>View Message</a>`,
         color: 0x4F46E5,
         footer: { text: "ibctank.store" },
         timestamp: new Date()
