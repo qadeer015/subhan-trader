@@ -1,4 +1,6 @@
 const Contact = require('../models/Contact');
+const {sendEmail} = require("../api/emailService");
+const renderTemplate = require("../utils/templateRenderer");
 
 const contactController = {
     async showForm(req, res) {
@@ -8,6 +10,21 @@ const contactController = {
     async submit(req, res) {
         const { name, email, message } = req.body;
         await Contact.create(name, email, message);
+        // Render admin email HTML
+        const html = renderTemplate("contact_message.html", {
+          name,
+          email,
+          message,
+          year: new Date().getFullYear()
+        });
+    
+        // Send email to admin
+        sendEmail({
+          to: "ibctank.team@gmail.com",   // Change to your admin inbox
+          subject: "New Contact Form Message",
+          text: `Message from ${name}`,
+          html
+        });
         req.flash('success', 'Your query submitted successfully.');
         res.json({ success: true });
     },
