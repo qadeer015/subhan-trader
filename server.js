@@ -19,7 +19,10 @@ const pageRoutes = require('./routes/pageRoutes');
 const authRoutes = require("./routes/authRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 
-require('dotenv').config();
+require('dotenv').config({
+  quiet: true
+});
+
 require('./config/passport');
 
 // View engine setup
