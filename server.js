@@ -56,7 +56,7 @@ app.use(session({
   saveUninitialized: false,
   store: sessionStore,
   cookie: {
-    secure: process.env.NODE_ENV === 'production',
+    secure: process.env.NODE_ENV === 'production' ? true : false,
     httpOnly: true,
     sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
     maxAge: 24 * 60 * 60 * 1000
@@ -160,10 +160,18 @@ app.use("/auth", authRoutes);
 app.use("/admin", adminRoutes);
 
 // Error handling middleware
+
 app.use((err, req, res, next) => {
     console.error(err.stack);
-    req.flash('error', 'Something went wrong!');
-    res.status(500).redirect('/');
+
+    if (req.flash) {
+        req.flash('error', 'Something went wrong!');
+        return res.redirect('/');
+    }
+
+    // Flash not available → send plain error
+    res.status(500).send("Something went wrong!");
 });
+
 
 app.listen(process.env.PORT , () => console.log(`Server running on http://localhost:${process.env.PORT }`));
