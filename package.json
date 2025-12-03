@@ -40,7 +40,8 @@
     "normalize-path": "^3.0.0",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "validator": "^13.9.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
